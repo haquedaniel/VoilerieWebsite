@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /en/
+Disallow: /de/
+
+Sitemap: https://leclosdelavoilerie.com/sitemap.xml

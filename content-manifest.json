@@ -1,0 +1,69 @@
+{
+  "baseUrl": "https://leclosdelavoilerie.com",
+  "defaultLocale": "fr-FR",
+  "futureLocales": [
+    "en-GB",
+    "de-DE"
+  ],
+  "pages": {
+    "index.html": {
+      "url": "/",
+      "title": "Le Clos de la Voilerie — Audierne, Finistère",
+      "description": "Appartements de charme dans une ancienne voilerie au bord de l’estuaire du Goyen, face à Audierne.",
+      "image": "/assets/hero-residence-mer.jpg",
+      "type": "website",
+      "name": "Le Clos de la Voilerie"
+    },
+    "un-jardin-sur-la-mer.html": {
+      "url": "/un-jardin-sur-la-mer.html",
+      "title": "Un jardin sur la mer — Le Clos de la Voilerie",
+      "description": "Appartement lumineux avec jardin face au port d’Audierne, terrasse, Wi‑Fi fibre et accès rapide aux plages du Cap Sizun.",
+      "image": "/assets/apt2-page-hero.jpg",
+      "type": "article",
+      "name": "Un jardin sur la mer",
+      "amenities": [
+        "jardin face à l’estuaire",
+        "terrasse",
+        "cuisine équipée",
+        "Wi‑Fi fibre",
+        "accès rapide au port et aux plages"
+      ]
+    },
+    "un-balcon-sur-la-mer.html": {
+      "url": "/un-balcon-sur-la-mer.html",
+      "title": "Un balcon sur la mer — Le Clos de la Voilerie",
+      "description": "Appartement lumineux avec balcon et vue sur le port d’Audierne, idéal pour ralentir face aux marées et découvrir le Finistère.",
+      "image": "/assets/apt4-page-hero-balcon.jpg",
+      "type": "article",
+      "name": "Un balcon sur la mer",
+      "amenities": [
+        "balcon avec vue port",
+        "cuisine équipée",
+        "literie confortable",
+        "Wi‑Fi fibre",
+        "accès rapide aux plages et au sentier côtier"
+      ]
+    },
+    "refuge-sous-les-toits.html": {
+      "url": "/refuge-sous-les-toits.html",
+      "title": "Le refuge sous les toits — Le Clos de la Voilerie",
+      "description": "Petit appartement plein de charme sous les toits d’Audierne, calme, lumineux, avec Wi‑Fi fibre et accès au jardin partagé.",
+      "image": "/assets/apt5-page-hero-cocon.jpg",
+      "type": "article",
+      "name": "Le refuge sous les toits",
+      "amenities": [
+        "sous les toits",
+        "vue par Velux",
+        "cuisine équipée",
+        "Wi‑Fi fibre",
+        "accès au jardin partagé"
+      ]
+    }
+  },
+  "notes": [
+    "Current rendered French pages are flat HTML files at the site root.",
+    "The /fr/ directory currently contains redirects, so the current design is not duplicated or altered.",
+    "When translations are ready, replace /fr/, /en/ and /de/ redirects/placeholders with real localized pages and update hreflang accordingly.",
+    "The visual body of the original HTML pages was left unchanged in this production-base package."
+  ]
+}

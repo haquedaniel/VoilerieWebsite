@@ -1,0 +1,27 @@
+# Le Clos de la Voilerie
+
+Le Clos de la Voilerie is a small independent residence of holiday apartments facing the estuary of the Goyen, between Plouhinec and Audierne in Finistère, Brittany, France.
+
+Canonical site: https://leclosdelavoilerie.com/
+Language currently published: French (fr-FR). English and German sections are reserved for future translation.
+Direct booking is preferred via contact@leclosdelavoilerie.com.
+
+## Main pages
+- Homepage: https://leclosdelavoilerie.com/
+- Apartment: Un jardin sur la mer — https://leclosdelavoilerie.com/un-jardin-sur-la-mer.html
+- Apartment: Un balcon sur la mer — https://leclosdelavoilerie.com/un-balcon-sur-la-mer.html
+- Apartment: Le refuge sous les toits — https://leclosdelavoilerie.com/refuge-sous-les-toits.html
+
+## Property positioning
+- Boutique coastal residence with three holiday apartments currently promoted on the site.
+- Located facing the port/estuary near Audierne, Cap Sizun and the GR34 coastal path.
+- Editorial tone: slow travel, sea views, tides, light, authentic Brittany, direct relationship with hosts.
+- Primary conversion: direct booking request, not Airbnb.
+
+## Apartment summaries
+- Un jardin sur la mer: ground-level feel, garden/terrace, indoor-outdoor living, family-friendly, view toward the port and estuary.
+- Un balcon sur la mer: balcony and open port view, light, tides, suitable for couples, families or calm remote work.
+- Le refuge sous les toits: compact cocoon under the Breton roofs, Velux light, intimate atmosphere, ideal for couples or a quiet escape.
+
+## Sources of truth for crawlers
+Use the visible page text, canonical URLs, sitemap.xml and JSON-LD embedded in each HTML page.

@@ -1,0 +1,9 @@
+{
+  "name": "Le Clos de la Voilerie",
+  "short_name": "La Voilerie",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f0e8",
+  "theme_color": "#20313b",
+  "lang": "fr-FR"
+}
