@@ -1,0 +1,5 @@
+Fix report
+- Replaced visible Airbnb wording with direct-booking wording.
+- Changed apartment links to explicit index.html targets for local preview.
+- Removed extra card: False (none).
+- Remaining 'airbnb' strings in root index: 0.
