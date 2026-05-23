@@ -6,6 +6,47 @@
   <title>Le refuge sous les toits — Le Clos de la Voilerie</title>
   <meta name="description" content="Petit appartement plein de charme sous les toits, avec vue par Velux et accès au jardin partagé du Clos de la Voilerie." />
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .booking-widget-panel {
+      background: #f7f2ea;
+    }
+    .booking-widget-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(340px, 500px);
+      gap: clamp(28px, 5vw, 64px);
+      align-items: start;
+    }
+    .booking-widget-copy h2 { margin-bottom: 16px; }
+    .booking-widget-copy p { max-width: 58ch; }
+    .booking-reassurance {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border: 1px solid rgba(31, 41, 55, 0.12);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.62);
+    }
+    .booking-reassurance strong { display:block; margin-bottom:6px; }
+    .booking-frame-wrap {
+      background: white;
+      border-radius: 22px;
+      padding: 10px;
+      box-shadow: 0 18px 44px rgba(31, 41, 55, 0.12);
+    }
+    .booking-frame {
+      width: 100%;
+      min-height: 980px;
+      border: 0;
+      display: block;
+      border-radius: 16px;
+      background: white;
+    }
+    @media (max-width: 860px) {
+      .booking-widget-grid { grid-template-columns: 1fr; }
+      .booking-frame { min-height: 1040px; }
+    }
+  </style>
+
   <!-- Production SEO / AI readiness: start -->
   <link rel="canonical" href="https://leclosdelavoilerie.com/refuge-sous-les-toits.html" />
   <link rel="alternate" hreflang="fr-FR" href="https://leclosdelavoilerie.com/refuge-sous-les-toits.html" />
@@ -34,7 +75,7 @@
       <a href="index.html#appartements">Appartements</a>
       <a href="index.html#toute-annee">Toute l’année</a>
       <a href="index.html#histoire">Notre histoire</a>
-      <a class="nav-cta" href="mailto:contact@leclosdelavoilerie.com">Demander un séjour</a>
+      <a class="nav-cta" href="#reservation">Demander un séjour</a>
     </nav>
   </header>
   <main id="top">
@@ -45,7 +86,7 @@
         <p class="apartment-subtitle">Un appartement compact, chaleureux et plein de charme, avec les poutres, la lumière par les Velux et la mer toute proche.</p>
         <ul class="mini-facts"><li>sous les toits</li><li>vue par Velux</li><li>accès au jardin partagé</li><li>idéal pour une escapade à deux</li></ul>
         <div class="hero-actions apartment-actions">
-          <a class="button button-dark" href="mailto:contact@leclosdelavoilerie.com?subject=Demande%20de%20séjour%20-%20Le%20refuge%20sous%20les%20toits">Demander un séjour</a>
+          <a class="button button-dark" href="#reservation">Demander un séjour</a>
           <a class="button button-outline" href="#photos">Voir les photos</a>
         </div>
       </div>
@@ -117,14 +158,29 @@
       </div>
     </section>
 
-    <section class="cta section-pad">
-      <div class="container cta-inner">
-        <p class="eyebrow dark">préparer votre séjour</p>
-        <h2>Envie de quelques jours face au Goyen ?</h2>
-        <p>Dites-nous vos dates, le nombre de voyageurs et l’ambiance recherchée. Nous vous orienterons vers l’appartement le plus adapté.</p>
-        <a class="button button-dark" href="mailto:contact@leclosdelavoilerie.com">Demander un séjour</a>
+
+    <section id="reservation" class="booking-widget-panel section-pad">
+      <div class="container booking-widget-grid">
+        <div class="booking-widget-copy">
+          <p class="eyebrow dark">réserver en direct</p>
+          <h2>Vérifier les disponibilités de cet appartement</h2>
+          <p>Sélectionnez vos dates pour obtenir une estimation immédiate pour Le refuge sous les toits. Vous pourrez ensuite nous envoyer une demande de réservation.</p>
+          <div class="booking-reassurance">
+            <strong>Réponse personnalisée</strong>
+            <span>La demande ne bloque pas automatiquement les dates : nous vérifions puis revenons vers vous avec les prochaines étapes.</span>
+          </div>
+        </div>
+        <div class="booking-frame-wrap">
+          <iframe
+            class="booking-frame"
+            src="https://widget.leclosdelavoilerie.com/?property_id=5"
+            title="Vérifier les disponibilités et demander une réservation"
+            loading="lazy"
+          ></iframe>
+        </div>
       </div>
     </section>
+
   </main>
 </body>
 </html>
