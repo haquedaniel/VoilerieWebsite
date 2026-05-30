@@ -569,3 +569,183 @@ body:has(img[src*="apt5-page-hero-cocon"]) .apartment-hero-image img{object-posi
     margin-bottom: 26px;
   }
 }
+
+/* Beds24 availability widget â€” Le Clos de la Voilerie
+   Used on apartment pages. Apt 5 widget id/class:
+   #bookWidget-voilerie-apt5 / .bookWidget-voilerie-apt5
+*/
+
+/* Card wrapper: overrides the old iframe wrapper */
+.booking-frame-wrap.voilerie-beds24-widget-wrap {
+  background: rgba(255, 255, 255, 0.78) !important;
+  border: 0 !important;
+  border-radius: 28px !important;
+  padding: 28px !important;
+  box-shadow: 0 24px 60px rgba(20, 59, 63, 0.10) !important;
+  outline: 0 !important;
+  overflow: visible !important;
+}
+
+/* The Beds24 widget sometimes injects its own borders/shadows */
+#bookWidget-voilerie-apt5,
+#bookWidget-voilerie-apt5 > div,
+#bookWidget-voilerie-apt5 form,
+#bookWidget-voilerie-apt5 table,
+.voilerie-beds24-widget,
+.voilerie-beds24-widget > div,
+.voilerie-beds24-widget form,
+.voilerie-beds24-widget table {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+#bookWidget-voilerie-apt5 *,
+.voilerie-beds24-widget * {
+  box-shadow: none !important;
+}
+
+/* Widget typography */
+.voilerie-beds24-widget {
+  font-family: var(--sans) !important;
+  color: var(--ink) !important;
+}
+
+.voilerie-beds24-widget h1,
+.voilerie-beds24-widget h2,
+.voilerie-beds24-widget h3,
+.voilerie-beds24-widget strong {
+  color: var(--ink) !important;
+  font-family: var(--sans) !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0.01em;
+}
+
+.voilerie-beds24-widget label {
+  color: var(--ink) !important;
+  font-weight: 800 !important;
+  font-size: 0.95rem !important;
+}
+
+/* Inputs */
+.voilerie-beds24-widget input,
+.voilerie-beds24-widget select {
+  width: 100% !important;
+  min-height: 48px !important;
+  border: 1px solid rgba(20, 59, 63, 0.16) !important;
+  border-radius: 14px !important;
+  background: #fbf8f1 !important;
+  color: var(--ink) !important;
+  font-size: 1rem !important;
+  padding: 0 14px !important;
+}
+
+/* Button */
+.voilerie-beds24-widget button,
+.voilerie-beds24-widget input[type="submit"],
+.voilerie-beds24-widget .bookbutton,
+.voilerie-beds24-widget .b24button,
+.voilerie-beds24-widget .ui-button {
+  width: 100% !important;
+  min-height: 52px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: #148c9a !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.02em;
+  box-shadow: 0 12px 28px rgba(20, 140, 154, 0.18) !important;
+}
+
+.voilerie-beds24-widget button:hover,
+.voilerie-beds24-widget input[type="submit"]:hover,
+.voilerie-beds24-widget .ui-button:hover {
+  filter: brightness(1.04);
+}
+
+/* Datepicker popup.
+   Beds24 appends this to <body>, so it must be targeted globally,
+   not only inside .voilerie-beds24-widget.
+*/
+#ui-datepicker-div.bookWidget-voilerie-apt5,
+.bookWidget-voilerie-apt5.ui-datepicker,
+.bookWidget-voilerie-apt5 .ui-datepicker,
+div.bookWidget-voilerie-apt5 {
+  background: #fffdf8 !important;
+  border: 1px solid rgba(20, 59, 63, 0.12) !important;
+  box-shadow: 0 18px 48px rgba(20, 59, 63, 0.14) !important;
+  color: var(--ink) !important;
+}
+
+/* Datepicker header */
+.bookWidget-voilerie-apt5 .ui-datepicker-header,
+.bookWidget-voilerie-apt5 .ui-datepicker-title {
+  background: #fffdf8 !important;
+  border: 0 !important;
+  color: var(--ink) !important;
+}
+
+/* Calendar cells */
+.bookWidget-voilerie-apt5 .ui-datepicker-calendar td,
+.bookWidget-voilerie-apt5 .ui-datepicker-calendar td a,
+.bookWidget-voilerie-apt5 .ui-datepicker-calendar td span {
+  border-color: rgba(255, 255, 255, 0.75) !important;
+  text-align: center !important;
+}
+
+/* Available dates: replaces Beds24's default bright green */
+.bookWidget-voilerie-apt5 .ui-state-available .ui-state-default,
+.bookWidget-voilerie-apt5 .ui-state-available a.ui-state-default {
+  background: #eef5f3 !important;
+  color: var(--ink) !important;
+  border: 1px solid rgba(20, 59, 63, 0.08) !important;
+}
+
+/* Hover */
+.bookWidget-voilerie-apt5 .ui-state-available .ui-state-default:hover {
+  background: #d9ece8 !important;
+  color: var(--ink) !important;
+}
+
+/* Reserved / unavailable dates */
+.bookWidget-voilerie-apt5 .ui-state-reserved .ui-state-default,
+.bookWidget-voilerie-apt5 .ui-state-disabled .ui-state-default,
+.bookWidget-voilerie-apt5 .ui-datepicker-unselectable .ui-state-default {
+  background: #e5e1da !important;
+  color: #9b948a !important;
+  opacity: 1 !important;
+}
+
+/* Selected date */
+.bookWidget-voilerie-apt5 .ui-datepicker-current-day .ui-state-default,
+.bookWidget-voilerie-apt5 .ui-state-active {
+  background: #148c9a !important;
+  color: #ffffff !important;
+}
+
+/* Today accent, if visible */
+.bookWidget-voilerie-apt5 .ui-datepicker-today .ui-state-default {
+  background: #d6b06d !important;
+  color: var(--ink) !important;
+}
+
+/* Mobile */
+@media (max-width: 860px) {
+  .booking-frame-wrap.voilerie-beds24-widget-wrap {
+    padding: 20px !important;
+    border-radius: 22px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .booking-frame-wrap.voilerie-beds24-widget-wrap {
+    padding: 16px !important;
+  }
+
+  .voilerie-beds24-widget input,
+  .voilerie-beds24-widget select {
+    font-size: 16px !important;
+  }
+}

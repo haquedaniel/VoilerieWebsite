@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Réservation confirmée — Le Clos de la Voilerie</title>
+  <meta name="description" content="Votre réservation au Clos de la Voilerie a bien été reçue. Retrouvez les prochaines étapes de votre séjour à Audierne." />
+  <link rel="canonical" href="https://leclosdelavoilerie.com/reservation-confirmee.html" />
+  <meta property="og:site_name" content="Le Clos de la Voilerie" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Réservation confirmée — Le Clos de la Voilerie" />
+  <meta property="og:description" content="Merci pour votre réservation. Nous avons hâte de vous accueillir au Clos de la Voilerie." />
+  <meta property="og:url" content="https://leclosdelavoilerie.com/reservation-confirmee.html" />
+  <meta property="og:image" content="https://leclosdelavoilerie.com/assets/hero-residence-mer.jpg" />
+  <link href="styles.css" rel="stylesheet" />
+  <style>
+    .confirmation-page { background: var(--cream); min-height: 100vh; }
+    .confirmation-hero {
+      width: min(1120px, calc(100% - 44px));
+      margin: 56px auto 0;
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(320px, .75fr);
+      gap: clamp(28px, 5vw, 70px);
+      align-items: start;
+      padding: clamp(40px, 7vw, 86px);
+      border-radius: 34px;
+      background: var(--sand);
+      box-shadow: 0 22px 54px rgba(24,53,58,.08);
+    }
+    .confirmation-hero h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3.4rem, 7vw, 7rem);
+      line-height: .92;
+      letter-spacing: -.055em;
+      font-weight: 400;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    .confirmation-intro {
+      margin: 28px 0 0;
+      max-width: 680px;
+      font-size: clamp(1.05rem, 1.6vw, 1.24rem);
+      line-height: 1.72;
+      color: #355e64;
+    }
+    .confirmation-card {
+      background: rgba(255,255,255,.76);
+      border: 1px solid rgba(24,53,58,.12);
+      border-radius: 28px;
+      padding: clamp(24px, 3vw, 34px);
+      box-shadow: 0 18px 44px rgba(24,53,58,.10);
+    }
+    .confirmation-card h2 {
+      font-family: var(--sans);
+      font-size: 1.15rem;
+      line-height: 1.25;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin: 0 0 16px;
+      color: var(--ink);
+    }
+    .next-steps {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+    .next-steps li {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+      color: #355e64;
+    }
+    .next-steps span {
+      display: inline-flex;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue);
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 900;
+    }
+    .reservation-summary {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(24,53,58,.10);
+      display: none;
+    }
+    .reservation-summary.is-visible { display: block; }
+    .summary-list { margin: 0; display: grid; gap: 10px; }
+    .summary-row {
+      display: grid;
+      grid-template-columns: 140px minmax(0,1fr);
+      gap: 14px;
+      font-size: .98rem;
+      color: #355e64;
+    }
+    .summary-row dt { font-weight: 900; color: var(--ink); }
+    .summary-row dd { margin: 0; overflow-wrap: anywhere; }
+    .confirmation-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+    .contact-strip {
+      width: min(1120px, calc(100% - 44px));
+      margin: 26px auto 70px;
+      padding: 24px 28px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(24,53,58,.10);
+      color: #355e64;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+    .contact-strip strong { color: var(--ink); }
+    .param-note {
+      font-size: .86rem;
+      color: rgba(24,53,58,.58);
+      margin-top: 16px;
+    }
+    @media (max-width: 860px) {
+      .confirmation-hero { grid-template-columns: 1fr; padding: 34px 24px; margin-top: 28px; }
+      .contact-strip { flex-direction: column; align-items: flex-start; }
+      .summary-row { grid-template-columns: 1fr; gap: 2px; }
+      .confirmation-actions .button { width: 100%; }
+    }
+  </style>
+</head>
+<body class="apartment-page confirmation-page">
+  <header aria-label="Navigation principale" class="site-header page-site-header">
+    <a aria-label="Le Clos de la Voilerie" class="brand" href="index.html">
+      <img alt="" src="assets/logo-voilerie.png" />
+      <span>le clos de la voilerie</span>
+    </a>
+    <nav>
+      <a href="index.html#appartements">Appartements</a>
+      <a href="index.html#toute-annee">Toute l’année</a>
+      <a href="index.html#histoire">Notre histoire</a>
+      <a class="nav-cta" href="index.html#appartements">Voir les appartements</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="confirmation-hero">
+      <div>
+        <p class="eyebrow dark">réservation confirmée</p>
+        <h1>Merci, votre séjour est bien reçu.</h1>
+        <p class="confirmation-intro">
+          Votre réservation au Clos de la Voilerie a été enregistrée. Vous allez recevoir un e-mail de confirmation avec les détails de votre séjour.
+        </p>
+        <div class="confirmation-actions">
+          <a class="button button-dark" href="index.html">Retour à l’accueil</a>
+          <a class="button button-outline" href="index.html#appartements">Voir les appartements</a>
+        </div>
+      </div>
+
+      <aside class="confirmation-card" aria-labelledby="next-title">
+        <h2 id="next-title">Prochaines étapes</h2>
+        <ul class="next-steps">
+          <li><span>1</span><div>Vérifiez votre boîte e-mail, y compris les courriers indésirables.</div></li>
+          <li><span>2</span><div>Conservez votre numéro de réservation si celui-ci apparaît dans l’e-mail.</div></li>
+          <li><span>3</span><div>Nous vous recontacterons si une précision est nécessaire avant votre arrivée.</div></li>
+        </ul>
+
+        <div class="reservation-summary" id="reservation-summary" aria-live="polite">
+          <h2>Récapitulatif</h2>
+          <dl class="summary-list" id="summary-list"></dl>
+          <p class="param-note">Ces informations sont reprises automatiquement depuis la page de réservation lorsqu’elles sont disponibles.</p>
+        </div>
+      </aside>
+    </section>
+
+    <div class="contact-strip">
+      <div><strong>Une question ?</strong> Contactez-nous au <a href="tel:+33633835525">06 33 83 55 25</a>.</div>
+      <a class="text-link" href="mailto:aurorefourier@hotmail.fr">aurorefourier@hotmail.fr</a>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var roomNames = {
+        "687116": "Le refuge sous les toits",
+        "687114": "Un jardin sur la mer",
+        "687115": "Un balcon sur la mer"
+      };
+      function get(keys) {
+        for (var i = 0; i < keys.length; i++) {
+          var value = params.get(keys[i]);
+          if (value) return value;
+        }
+        return "";
+      }
+      function formatDate(value) {
+        if (!value) return "";
+        var cleaned = value.replace(/\+/g, " ");
+        var iso = cleaned.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})/);
+        if (iso) {
+          var d = new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]));
+          if (!isNaN(d)) return d.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+        }
+        return decodeURIComponent(cleaned);
+      }
+      var roomid = get(["roomid", "room", "roomId"]);
+      var fields = [
+        ["Référence", get(["booking", "bookid", "bookingid", "bookingId", "ref", "reference", "id"])],
+        ["Appartement", roomNames[roomid] || get(["roomname", "roomName", "unit", "apartment"]) || ""],
+        ["Arrivée", formatDate(get(["checkin", "firstnight", "firstdate", "arrival"]))],
+        ["Départ", formatDate(get(["checkout", "lastnight", "lastdate", "departure"]))],
+        ["Nuits", get(["numnight", "nights"])],
+        ["Voyageurs", get(["numadult", "adults", "guests"])],
+        ["Enfants", get(["numchild", "children"])],
+        ["Montant", get(["amount", "total", "price", "payment", "paid"])],
+        ["Statut", get(["status", "state"])]
+      ].filter(function (row) { return row[1]; });
+
+      if (fields.length) {
+        var list = document.getElementById("summary-list");
+        fields.forEach(function (row) {
+          var wrap = document.createElement("div");
+          wrap.className = "summary-row";
+          var dt = document.createElement("dt");
+          var dd = document.createElement("dd");
+          dt.textContent = row[0];
+          dd.textContent = row[1];
+          wrap.appendChild(dt);
+          wrap.appendChild(dd);
+          list.appendChild(wrap);
+        });
+        document.getElementById("reservation-summary").classList.add("is-visible");
+      }
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "booking_confirmation",
+        booking_reference: get(["booking", "bookid", "bookingid", "ref", "reference", "id"]),
+        roomid: roomid,
+        propid: get(["propid", "property", "propertyid"]),
+        value: get(["amount", "total", "price", "payment", "paid"]),
+        currency: get(["currency", "cur"]),
+        source: "beds24"
+      });
+    })();
+  </script>
+</body>
+</html>
