@@ -41,33 +41,6 @@
       border-radius: 16px;
       background: white;
     }
-
-
-    /* Beds24 availability widget */
-    .voilerie-beds24-widget-wrap {
-      overflow: visible;
-    }
-    .voilerie-beds24-widget {
-      min-height: 220px;
-    }
-    .voilerie-beds24-widget,
-    .voilerie-beds24-widget * {
-      box-sizing: border-box;
-    }
-    .voilerie-beds24-widget input,
-    .voilerie-beds24-widget select,
-    .voilerie-beds24-widget button {
-      font-family: inherit;
-    }
-    .booking-noscript {
-      margin: 0;
-      color: #1f2937;
-      line-height: 1.5;
-    }
-    .booking-noscript a {
-      color: #0f766e;
-      font-weight: 700;
-    }
     @media (max-width: 860px) {
       .booking-widget-grid { grid-template-columns: 1fr; }
       .booking-frame { min-height: 1040px; }
@@ -188,74 +161,6 @@
     gap: 0.28rem;
   }
 }
-
-
-/* Mobile language selector: the main nav is hidden on small screens, so keep language links visible */
-.lang-switch-mobile {
-  display: none;
-}
-
-@media (max-width: 980px) {
-  .page-site-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .page-site-header .brand {
-    min-width: 0;
-  }
-
-  .page-site-header .brand img {
-    width: 52px;
-    height: 52px;
-  }
-
-  .page-site-header .brand span {
-    display: inline;
-    font-size: 0.78rem;
-    letter-spacing: 0.16em;
-    max-width: 160px;
-  }
-
-  .lang-switch-mobile {
-    display: inline-flex !important;
-    margin-left: auto;
-    padding: 8px 10px;
-    border: 1px solid rgba(24, 53, 58, 0.16);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.62);
-    color: var(--ink);
-    font-size: 0.72rem;
-    letter-spacing: 0.08em;
-    gap: 0.34rem;
-  }
-
-  .lang-switch-mobile a {
-    color: var(--ink);
-    opacity: 0.72;
-  }
-
-  .lang-switch-mobile a[aria-current="true"] {
-    opacity: 1;
-    font-weight: 900;
-  }
-}
-
-@media (max-width: 420px) {
-  .page-site-header .brand span {
-    max-width: 120px;
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-  }
-
-  .lang-switch-mobile {
-    font-size: 0.68rem;
-    gap: 0.25rem;
-    padding: 7px 9px;
-  }
-}
-
 </style></head>
 <body class="apartment-page">
 <header aria-label="Navigation principale" class="site-header page-site-header">
@@ -269,7 +174,6 @@
 <a href="index.html#histoire">Notre histoire</a>
 <a class="nav-cta" href="#reservation">Réserver ici</a>
 <div aria-label="Choix de la langue" class="lang-switch"><a aria-current="true" href="un-jardin-sur-la-mer.html" hreflang="fr" lang="fr">FR</a><span aria-hidden="true">·</span><a href="en/a-garden-by-the-sea.html" hreflang="en" lang="en">EN</a><span aria-hidden="true">·</span><a href="de/ein-garten-am-meer.html" hreflang="de" lang="de">DE</a><span aria-hidden="true">·</span><a href="es/un-jardin-junto-al-mar.html" hreflang="es" lang="es">ES</a></div></nav>
-<div aria-label="Choix de la langue" class="lang-switch lang-switch-mobile"><a aria-current="true" href="un-jardin-sur-la-mer.html" hreflang="fr" lang="fr">FR</a><span aria-hidden="true">·</span><a href="en/a-garden-by-the-sea.html" hreflang="en" lang="en">EN</a><span aria-hidden="true">·</span><a href="de/ein-garten-am-meer.html" hreflang="de" lang="de">DE</a><span aria-hidden="true">·</span><a href="es/un-jardin-junto-al-mar.html" hreflang="es" lang="es">ES</a></div>
 </header>
 <main id="top">
 <section class="apartment-hero">
@@ -335,30 +239,6 @@
 </div>
 </div>
 </section>
-<section class="booking-widget-panel section-pad" id="reservation">
-<div class="container booking-widget-grid">
-<div class="booking-widget-copy">
-<p class="eyebrow dark">réserver en direct</p>
-<h2>Vérifier les disponibilités et réserver cet appartement</h2>
-<p>Sélectionnez vos dates pour obtenir une estimation immédiate pour Un jardin sur la mer et accéder à la réservation sécurisée.</p>
-<div class="booking-reassurance">
-<strong>Contact</strong>
-<span>N'hésitez pas à nous contacter au 06 33 83 55 25.</span>
-</div>
-</div>
-<div class="booking-frame-wrap voilerie-beds24-widget-wrap">
-  <div id="bookWidget-voilerie-apt2" class="voilerie-beds24-widget"></div>
-  <noscript>
-    <p class="booking-noscript">
-      JavaScript est nécessaire pour afficher les disponibilités.
-      <a href="https://beds24.com/booking.php?roomid=689472&lang=fr" target="_blank" rel="noopener">
-        Ouvrir la page de réservation
-      </a>
-    </p>
-  </noscript>
-</div>
-</div>
-</section>
 <section class="also-section section-pad">
 <div class="container">
 <div class="section-heading compact">
@@ -368,19 +248,23 @@
 <div class="also-grid"><a class="also-card" href="un-balcon-sur-la-mer.html"><img alt="Appartement avec vue port" src="assets/apt4-home-card.jpg"/><span>balcon · lumière</span><strong>Un balcon sur la mer</strong></a><a class="also-card" href="refuge-sous-les-toits.html"><img alt="Appartement sous les toits" src="assets/apt5-home-card.jpg"/><span>cocon · velux</span><strong>Le refuge sous les toits</strong></a></div>
 </div>
 </section>
+<section class="booking-widget-panel section-pad" id="reservation">
+<div class="container booking-widget-grid">
+<div class="booking-widget-copy">
+<p class="eyebrow dark">réserver en direct</p>
+<h2>Vérifier les disponibilités et réserver cet appartement</h2>
+<p>Sélectionnez vos dates pour connaitre immédiatement les disponibilités de “Un jardin sur la mer”. </p> <p> S’il est disponible, envoyez une demande de réservation et recevez une confirmation sous 24h.</p>
+<div class="booking-reassurance">
+<strong>Contact</strong>
+<span>N'hesitez pas à nous contacter au 06 33 83 55 25 </span>
+</div>
+</div>
+<div class="booking-frame-wrap">
+<iframe class="booking-frame" loading="lazy" src="https://widget.leclosdelavoilerie.com/?property_id=2" title="Vérifier les disponibilités et demander une réservation"></iframe>
+</div>
+</div>
+</section>
 </main>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://media.xmlcal.com/widget/1.01/js/bookWidget.min.js"></script>
-<script>
-jQuery(function () {
-  jQuery('#bookWidget-voilerie-apt2').bookWidget({
-    roomid: 689472,
-    formAction: 'https://beds24.com/booking.php',
-    widgetLang: 'fr',
-    widgetType: 'BookingBox'
-  });
-});
-</script>
 <script>
 (function () {
   var currentLang = "fr";
