@@ -1,0 +1,770 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Le Clos de la Voilerie — Audierne, Finistère</title>
+<meta content="Appartements de charme dans une ancienne voilerie au bord de l’estuaire du Goyen, face à Audierne." name="description"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+    .booking-widget-panel {
+      background: #f7f2ea;
+    }
+    .booking-widget-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(340px, 500px);
+      gap: clamp(28px, 5vw, 64px);
+      align-items: start;
+    }
+    .booking-widget-copy h2 { margin-bottom: 16px; }
+    .booking-widget-copy p { max-width: 58ch; }
+    .booking-reassurance {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border: 1px solid rgba(31, 41, 55, 0.12);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.62);
+    }
+    .booking-reassurance strong { display:block; margin-bottom:6px; }
+    .booking-frame-wrap {
+      background: white;
+      border-radius: 22px;
+      padding: 10px;
+      box-shadow: 0 18px 44px rgba(31, 41, 55, 0.12);
+    }
+    .booking-frame {
+      width: 100%;
+      min-height: 980px;
+      border: 0;
+      display: block;
+      border-radius: 16px;
+      background: white;
+    }
+
+    .voilerie-room-widget-panel[hidden] {
+      display: none !important;
+    }
+    .voilerie-home-widgets {
+      min-height: 230px;
+    }
+
+    @media (max-width: 860px) {
+      .booking-widget-grid { grid-template-columns: 1fr; }
+      .booking-frame { min-height: 1040px; }
+    }
+
+
+    /* Building history brick — added from the brochure/history deck */
+    .building-history {
+      position: relative;
+      overflow: hidden;
+    }
+    .building-history-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1.08fr);
+      gap: clamp(32px, 6vw, 82px);
+      align-items: center;
+    }
+    .building-history-copy p {
+      max-width: 62ch;
+    }
+    .history-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .history-moment {
+      padding: 16px 14px;
+      border: 1px solid rgba(31, 41, 55, 0.12);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.54);
+    }
+    .history-moment strong {
+      display: block;
+      margin-bottom: 6px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.1rem;
+      color: #1f2937;
+    }
+    .history-moment span {
+      display: block;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: rgba(31, 41, 55, 0.74);
+    }
+    .history-images {
+      position: relative;
+      min-height: 560px;
+    }
+    .history-image-card {
+      position: absolute;
+      overflow: hidden;
+      border-radius: 28px;
+      box-shadow: 0 22px 56px rgba(31, 41, 55, 0.16);
+      background: #efe8dc;
+    }
+    .history-image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .history-image-card.primary {
+      right: 0;
+      top: 0;
+      width: 76%;
+      height: 430px;
+    }
+    .history-image-card.secondary {
+      left: 0;
+      bottom: 18px;
+      width: 54%;
+      height: 285px;
+      border: 10px solid #f7f2ea;
+    }
+    .history-image-card.archive {
+      right: 8%;
+      bottom: 0;
+      width: 34%;
+      height: 210px;
+      border: 10px solid #f7f2ea;
+      filter: sepia(0.18) contrast(0.96);
+    }
+    .history-caption {
+      position: absolute;
+      left: 8%;
+      top: 22px;
+      max-width: 210px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: rgba(247, 242, 234, 0.86);
+      color: #1f2937;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      box-shadow: 0 10px 28px rgba(31, 41, 55, 0.12);
+    }
+    @media (max-width: 980px) {
+      .building-history-grid { grid-template-columns: 1fr; }
+      .history-images { min-height: 500px; }
+      .history-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .history-images {
+        min-height: 0;
+        display: grid;
+        gap: 14px;
+      }
+      .history-image-card,
+      .history-image-card.primary,
+      .history-image-card.secondary,
+      .history-image-card.archive {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        height: auto;
+        border: 0;
+      }
+      .history-image-card img { aspect-ratio: 4 / 3; }
+      .history-caption { position: static; margin-bottom: 14px; width: fit-content; }
+      .history-timeline { grid-template-columns: 1fr; }
+    }
+
+  
+    /* Beds24 availability widget */
+    .voilerie-beds24-widget-wrap {
+      overflow: visible;
+    }
+    .voilerie-beds24-widget {
+      min-height: 220px;
+    }
+    .voilerie-beds24-widget,
+    .voilerie-beds24-widget * {
+      box-sizing: border-box;
+    }
+    .voilerie-beds24-widget input,
+    .voilerie-beds24-widget select,
+    .voilerie-beds24-widget button,
+    .voilerie-apartment-select {
+      font-family: inherit;
+    }
+    .booking-noscript {
+      margin: 0;
+      color: #1f2937;
+      line-height: 1.5;
+    }
+    .booking-noscript a {
+      color: #0f766e;
+      font-weight: 700;
+    }
+    .voilerie-apartment-choice {
+      margin: 0 0 18px;
+    }
+    .voilerie-apartment-choice label {
+      display: block;
+      margin-bottom: 8px;
+      color: #18353a;
+      font-weight: 800;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .voilerie-apartment-select {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid rgba(24, 53, 58, 0.18);
+      border-radius: 16px;
+      background: #fbf7ef;
+      color: #18353a;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0 14px;
+      outline: none;
+    }
+    .voilerie-apartment-select:focus {
+      border-color: rgba(43, 155, 173, 0.65);
+      box-shadow: 0 0 0 4px rgba(43, 155, 173, 0.12);
+    }
+    .mobile-lang-switch {
+      display: none;
+    }
+    @media (max-width: 980px) {
+      .site-header {
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+      }
+      .mobile-lang-switch {
+        display: inline-flex;
+        justify-self: end;
+        align-items: center;
+        gap: 0.32rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: inherit;
+      }
+      .mobile-lang-switch a {
+        color: inherit;
+        text-decoration: none;
+        opacity: 0.72;
+      }
+      .mobile-lang-switch a[aria-current="true"],
+      .mobile-lang-switch a:hover {
+        opacity: 1;
+        text-decoration: underline;
+        text-underline-offset: 0.18em;
+      }
+      .mobile-lang-switch span {
+        opacity: 0.45;
+      }
+    }
+</style>
+<!-- Production SEO / AI readiness: start -->
+<link href="https://leclosdelavoilerie.com/" rel="canonical"/>
+<meta content="Le Clos de la Voilerie" property="og:site_name"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="website" property="og:type"/>
+<meta content="Le Clos de la Voilerie — Audierne, Finistère" property="og:title"/>
+<meta content="Appartements de charme dans une ancienne voilerie au bord de l’estuaire du Goyen, face à Audierne." property="og:description"/>
+<meta content="https://leclosdelavoilerie.com/" property="og:url"/>
+<meta content="https://leclosdelavoilerie.com/assets/hero-residence-mer.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Le Clos de la Voilerie — Audierne, Finistère" name="twitter:title"/>
+<meta content="Appartements de charme dans une ancienne voilerie au bord de l’estuaire du Goyen, face à Audierne." name="twitter:description"/>
+<meta content="https://leclosdelavoilerie.com/assets/hero-residence-mer.jpg" name="twitter:image"/>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"LodgingBusiness","@id":"https://leclosdelavoilerie.com/#lodgingbusiness","name":"Le Clos de la Voilerie","url":"https://leclosdelavoilerie.com/","description":"Appartements de charme dans une ancienne voilerie au bord de l’estuaire du Goyen, face à Audierne.","image":"https://leclosdelavoilerie.com/assets/hero-residence-mer.jpg","email":"contact@leclosdelavoilerie.com","address":{"@type":"PostalAddress","addressLocality":"Plouhinec","postalCode":"29780","addressRegion":"Finistère","addressCountry":"FR"},"areaServed":["Audierne","Plouhinec","Cap Sizun","Finistère","Bretagne"],"makesOffer":[{"@type":"Offer","itemOffered":{"@id":"https://leclosdelavoilerie.com/un-jardin-sur-la-mer.html#apartment"}},{"@type":"Offer","itemOffered":{"@id":"https://leclosdelavoilerie.com/un-balcon-sur-la-mer.html#apartment"}},{"@type":"Offer","itemOffered":{"@id":"https://leclosdelavoilerie.com/refuge-sous-les-toits.html#apartment"}}]},{"@context":"https://schema.org","@type":"WebSite","@id":"https://leclosdelavoilerie.com/#website","name":"Le Clos de la Voilerie","url":"https://leclosdelavoilerie.com/","inLanguage":"fr-FR","publisher":{"@id":"https://leclosdelavoilerie.com/#lodgingbusiness"}}]</script>
+<!-- Production SEO / AI readiness: end -->
+<style>
+    /* Building history brick — cleaned layout */
+    .building-history-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+      gap: clamp(32px, 5vw, 72px);
+      align-items: center;
+    }
+
+    .building-history-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .building-history-copy h2 {
+      margin-bottom: 18px;
+    }
+
+    .building-history-copy p {
+      max-width: 62ch;
+    }
+
+    .building-history-media {
+      position: relative;
+      display: grid;
+      gap: 18px;
+      z-index: 1;
+    }
+
+    .building-history-media figure {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.55);
+      box-shadow: 0 18px 48px rgba(31, 41, 55, 0.10);
+    }
+
+    .building-history-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .history-main {
+      aspect-ratio: 16 / 11;
+    }
+
+    .history-thumbs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .history-thumbs figure {
+      aspect-ratio: 4 / 3;
+      border-radius: 22px;
+    }
+
+    @media (max-width: 900px) {
+      .building-history-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .building-history-media {
+        order: -1;
+      }
+
+      .history-thumbs {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .history-thumbs {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+<style>
+/* Language selector and optional language suggestion */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  margin-left: clamp(12px, 2vw, 22px);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.lang-switch a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.72;
+}
+.lang-switch a[aria-current="true"],
+.lang-switch a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.lang-suggest {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 9999;
+  max-width: min(92vw, 560px);
+  display: none;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 15px 13px 18px;
+  border-radius: 999px;
+  background: rgba(31, 41, 55, 0.92);
+  color: #fff;
+  box-shadow: 0 18px 46px rgba(31, 41, 55, 0.22);
+  backdrop-filter: blur(12px);
+  font-size: 0.92rem;
+}
+.lang-suggest.is-visible { display: flex; }
+.lang-suggest a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.lang-suggest button {
+  appearance: none;
+  border: 0;
+  background: rgba(255,255,255,0.14);
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  line-height: 1;
+}
+@media (max-width: 760px) {
+  .lang-switch {
+    margin-left: 10px;
+    font-size: 0.72rem;
+    gap: 0.32rem;
+  }
+  .lang-suggest {
+    border-radius: 18px;
+    align-items: flex-start;
+  }
+}
+</style><link href="https://leclosdelavoilerie.com/" hreflang="fr" rel="alternate"/><link href="https://leclosdelavoilerie.com/en/" hreflang="en" rel="alternate"/><link href="https://leclosdelavoilerie.com/de/" hreflang="de" rel="alternate"/><link href="https://leclosdelavoilerie.com/es/" hreflang="es" rel="alternate"/><link href="https://leclosdelavoilerie.com/" hreflang="x-default" rel="alternate"/><style>
+/* Extended language selector */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  margin-left: clamp(12px, 2vw, 22px);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.lang-switch a {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.72;
+}
+.lang-switch a[aria-current="true"],
+.lang-switch a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+@media (max-width: 760px) {
+  .lang-switch {
+    margin-left: 10px;
+    font-size: 0.72rem;
+    gap: 0.28rem;
+  }
+}
+</style></head>
+<body>
+<header aria-label="Navigation principale" class="site-header">
+<a aria-label="Le Clos de la Voilerie" class="brand" href="#top">
+<img alt="" src="assets/logo-voilerie.png"/>
+<span>le clos de la voilerie</span>
+</a>
+<div aria-label="Choix de la langue mobile" class="mobile-lang-switch"><a aria-current="true" href="index.html" hreflang="fr" lang="fr">FR</a><span aria-hidden="true">·</span><a href="en/index.html" hreflang="en" lang="en">EN</a><span aria-hidden="true">·</span><a href="de/index.html" hreflang="de" lang="de">DE</a><span aria-hidden="true">·</span><a href="es/index.html" hreflang="es" lang="es">ES</a></div>
+<nav>
+<a href="#appartements">Appartements</a>
+<a href="#toute-annee">Toute l’année</a>
+<a href="#histoire">Notre histoire</a>
+<a class="nav-cta" href="#reservation">Réserver ici</a>
+<div aria-label="Choix de la langue" class="lang-switch"><a aria-current="true" href="index.html" hreflang="fr" lang="fr">FR</a><span aria-hidden="true">·</span><a href="en/index.html" hreflang="en" lang="en">EN</a><span aria-hidden="true">·</span><a href="de/index.html" hreflang="de" lang="de">DE</a><span aria-hidden="true">·</span><a href="es/index.html" hreflang="es" lang="es">ES</a></div></nav>
+</header>
+<main id="top">
+<section aria-label="Le Clos de la Voilerie face à la mer" class="hero">
+<div class="hero-bg"></div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<p class="eyebrow">plouhinec · audierne · finistère</p>
+<h1>Une résidence avec une âme, face à la mer.</h1>
+<p class="hero-subtitle">Des appartements uniques, lumineux et confortables, dans une bâtisse historique au bord de l’estuaire du Goyen.</p>
+<div class="hero-actions">
+<a class="button button-light" href="#appartements">Découvrir les appartements</a>
+<a class="button button-ghost" href="#reservation">Réserver ici</a>
+</div>
+</div>
+</section>
+<section class="intro section-pad">
+<div class="container intro-grid">
+<div>
+<p class="eyebrow dark">une ancienne voilerie, un nouveau lieu de séjour</p>
+<h2>Un pied dans Audierne, l’autre dans la lumière du Goyen.</h2>
+</div>
+<div class="intro-copy">
+<p>Au Clos de la Voilerie, on vient pour ralentir, respirer l’air marin et profiter d’une Bretagne vivante : le port, les marées, les chemins côtiers, les marchés, les retours de plage et les soirées dehors.</p>
+<p>Chaque appartement a son caractère, mais tous partagent la même situation rare : une résidence de charme, face à l’eau, dans un lieu simple, lumineux et profondément breton, à 3 min à pieds des plages et des commerces.</p>
+</div>
+</div>
+</section>
+<section class="season section-pad soft-bg" id="toute-annee">
+<div class="container season-grid">
+<div class="season-copy">
+<p class="eyebrow dark">toute l’année</p>
+<h2>Le charme de la Bretagne en toute saison.</h2>
+<p>Longues soirées d’été, grandes marées, lumière d’automne, balades vivifiantes ou week-ends cocooning : chaque saison donne une autre raison de venir.</p>
+<div class="season-list">
+<span>Apéros dehors</span>
+<span>Marchés bretons</span>
+<span>Balades côtières</span>
+<span>Tempêtes &amp; grandes marées</span>
+</div>
+</div>
+<div class="season-images">
+<img alt="Vue sur le port et le jardin du Clos de la Voilerie" class="season-main" src="assets/view-from-garden.jpg"/>
+<img alt="Côte bretonne sous un ciel de tempête" class="season-small" src="assets/stormy-bretagne.jpg"/>
+</div>
+</div>
+</section>
+<section class="apartments section-pad" id="appartements">
+<div class="container">
+<div class="section-heading">
+<p class="eyebrow dark">trois ambiances</p>
+<h2>Choisissez votre façon de vivre la mer.</h2>
+<p>Jardin, balcon ou refuge sous les toits : trois appartements, une même adresse face à l’estuaire.</p>
+</div>
+<div class="apartment-grid">
+<article class="apartment-card">
+<a class="card-image" href="un-jardin-sur-la-mer.html">
+<img alt="Jardin face au port pour Un jardin sur le port" src="assets/apt2-home-card.jpg"/>
+</a>
+<div class="card-copy">
+<p class="card-kicker">jardin · famille · dehors</p>
+<h3>Un jardin sur le port</h3>
+<p>Un appartement fait pour vivre dehors : café au soleil, dîner dans le jardin, port en toile de fond et accès immédiat au rythme des marées.</p>
+<a class="text-link" href="un-jardin-sur-la-mer.html">Découvrir l’appartement</a>
+</div>
+</article>
+<article class="apartment-card">
+<a class="card-image" href="un-balcon-sur-la-mer.html">
+<img alt="Pièce de vie lumineuse pour Un balcon sur la mer" src="assets/apt4-home-card.jpg"/>
+</a>
+<div class="card-copy">
+<p class="card-kicker">lumière · confort · port</p>
+<h3>Un balcon sur la mer</h3>
+<p>Un lieu lumineux et confortable pour profiter des marées, des couchers de soleil et des journées entre port, plages et sentiers côtiers.</p>
+<a class="text-link" href="un-balcon-sur-la-mer.html">Découvrir l’appartement</a>
+</div>
+</article>
+<article class="apartment-card">
+<a class="card-image" href="refuge-sous-les-toits.html">
+<img alt="Appartement plein de charme sous les toits" src="assets/apt5-home-card.jpg"/>
+</a>
+<div class="card-copy">
+<p class="card-kicker">cocon · poutres · charme</p>
+<h3>Une fenêtre sur la mer</h3>
+<p>Chaleureux et plein de charme : un cocon sous les poutres, idéal pour quelques jours à deux ou à trois, entre lumière de mer et calme breton.</p>
+<a class="text-link" href="refuge-sous-les-toits.html">Découvrir l’appartement</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="booking-widget-panel section-pad" id="reservation">
+<div class="container booking-widget-grid">
+<div class="booking-widget-copy">
+<p class="eyebrow dark">réserver en direct</p>
+<h2>Vérifier les disponibilités et réserver</h2>
+<p>Sélectionnez l’appartement qui vous intéresse, puis vos dates, pour accéder à la réservation sécurisée.</p>
+<div class="booking-reassurance">
+<strong>Contact</strong>
+<span>N'hésitez pas à nous contacter au 06 33 83 55 25.</span>
+</div>
+</div>
+<div class="booking-frame-wrap voilerie-beds24-widget-wrap">
+  <div class="voilerie-apartment-choice">
+    <label for="voilerie-apartment-select">Appartement</label>
+    <select id="voilerie-apartment-select" class="voilerie-apartment-select">
+      <option value="689472">Un jardin sur la mer</option>
+      <option value="687189">Un balcon sur la mer</option>
+      <option value="687116">Le refuge sous les toits</option>
+    </select>
+  </div>
+  <div id="bookWidget-voilerie-home-container" class="voilerie-home-widgets">
+    <div class="voilerie-room-widget-panel" data-roomid="689472">
+      <div id="bookWidget-voilerie-home-apt2" class="voilerie-beds24-widget"></div>
+    </div>
+    <div class="voilerie-room-widget-panel" data-roomid="687189" hidden>
+      <div id="bookWidget-voilerie-home-apt4" class="voilerie-beds24-widget"></div>
+    </div>
+    <div class="voilerie-room-widget-panel" data-roomid="687116" hidden>
+      <div id="bookWidget-voilerie-home-apt5" class="voilerie-beds24-widget"></div>
+    </div>
+  </div>
+  <noscript>
+    <p class="booking-noscript">
+      JavaScript est nécessaire pour afficher les disponibilités.
+      <a href="https://beds24.com/booking.php?propid=331524&lang=fr" target="_blank" rel="noopener">
+        Ouvrir la page de réservation
+      </a>
+    </p>
+  </noscript>
+</div>
+</div>
+</section>
+
+<section class="experience section-pad dark-panel">
+<div class="container experience-grid">
+<div class="experience-copy">
+<p class="eyebrow light">vivre la côte autrement</p>
+<h2>Pas seulement dormir près de la mer. La vivre.</h2>
+<p>Le Clos de la Voilerie est pensé comme un point de départ pour explorer, marcher, goûter, pagayer, regarder les lumières changer et rentrer le soir avec du sel dans les cheveux.</p>
+</div>
+<div class="experience-cards">
+<figure>
+<img alt="Kayaks sur l’eau près d’Audierne" src="assets/kayak-estuaire.jpg"/>
+<figcaption>Explorer l’estuaire</figcaption>
+</figure>
+<figure>
+<img alt="Soirée autour d’un brasero" src="assets/firepit-evening.jpg"/>
+<figcaption>Soirées dehors</figcaption>
+</figure>
+<figure>
+<img alt="Marché d’Audierne" src="assets/market-audierne.jpg"/>
+<figcaption>Marchés &amp; produits locaux</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section class="local section-pad">
+<div class="container local-grid">
+<article>
+<img alt="Balade à la Pointe du Raz" src="assets/point-du-raz.jpg"/>
+<h3>Le Cap Sizun à portée de main</h3>
+<p>Plages sauvages, criques, falaises et Pointe du Raz : les paysages changent vite, souvent avec une lumière spectaculaire.</p>
+</article>
+<article>
+<img alt="Vélo face à la mer dans le Cap Sizun" src="assets/cycling-cap-sizun.jpg"/>
+<h3>Balades, vélo, air iodé</h3>
+<p>On part facilement pour quelques heures dehors, entre sentiers côtiers, petites routes, ports et points de vue.</p>
+</article>
+</div>
+</section>
+<section class="building-history section-pad soft-bg" id="histoire">
+<div class="container building-history-grid">
+<div class="building-history-copy">
+<p class="eyebrow dark">un lieu riche d’histoire</p>
+<h2>Avant d’accueillir les voyageurs, la bâtisse vivait déjà au rythme du port.</h2>
+<p>Construite à la fin du XIXe siècle, la maison qui abrite aujourd’hui Le Clos de la Voilerie a longtemps été un lieu important entre Plouhinec et Audierne.</p>
+<p>Édifiée en 1869 par un marchand de vin, elle servait d’abord au stockage des tonneaux débarqués depuis la cale située devant la propriété. Les anneaux conservés sur la façade ouest rappellent encore le passage des chevaux qui les transportaient vers les villages alentours.</p>
+<p>Au début du XXe siècle, le bâtiment est repris par la famille Donnard, fabricants de voiles de bateaux. Ateliers, appartement familial, bistrot de marins : la maison a gardé de chaque époque une part de son caractère.</p>
+</div>
+<div aria-label="Images historiques du Clos de la Voilerie" class="building-history-media">
+<figure class="history-main">
+<img alt="Le bâtiment du Clos de la Voilerie face à l’estuaire du Goyen" src="assets/history-building-current.jpg"/>
+</figure>
+<div class="history-thumbs">
+<figure>
+<img alt="Vue ancienne du bâtiment depuis l’estuaire" src="assets/history-building-archive.jpg"/>
+</figure>
+<figure>
+<img alt="Archive ancienne du port et de la bâtisse" src="assets/history-port-archive.jpg"/>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section class="story section-pad soft-bg" id="notre-histoire">
+<div class="container story-grid">
+<div class="story-photo">
+<img alt="Famille en navigation" src="assets/our-story-sailing.jpg"/>
+</div>
+<div class="story-copy">
+<img alt="" class="story-mark" src="assets/logo-voilerie.png"/>
+<p class="eyebrow dark">notre histoire</p>
+<h2>Une histoire de mer, de famille et de lieux qui ont une âme.</h2>
+<p>Nous sommes une famille de navigateurs. La mer fait partie de notre quotidien, de nos projets et de notre manière de regarder les lieux.</p>
+<p>Quand nous avons découvert cette ancienne voilerie au bord du Goyen, nous avons immédiatement aimé son caractère : les pierres, la lumière, la proximité du port et cette sensation rare d’être à la fois dans un village vivant et face à l’eau.</p>
+<p>Le Clos de la Voilerie est né de cette envie : créer des appartements simples, confortables et chaleureux, mais surtout ancrés dans leur paysage. Un lieu où l’on vient pour dormir, bien sûr — mais aussi pour respirer, regarder les marées et repartir avec un vrai souvenir de Bretagne.</p>
+</div>
+</div>
+</section>
+<section class="cta section-pad" id="contact">
+<div class="container cta-inner">
+<p class="eyebrow dark">préparer votre séjour</p>
+<h2>Envie de quelques jours face au Goyen ?</h2>
+<p>Donnez-nous vos dates pour connaitre immédiatement les disponibilités et accédez à la réservation.</p>
+<a class="button button-dark" href="#reservation">Réserver ici</a>
+</div>
+</section>
+</main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://media.xmlcal.com/widget/1.01/js/bookWidget.min.js"></script>
+<script>
+jQuery(function () {
+  var widgetIdsByRoom = {
+    "689472": "#bookWidget-voilerie-home-apt2",
+    "687189": "#bookWidget-voilerie-home-apt4",
+    "687116": "#bookWidget-voilerie-home-apt5"
+  };
+
+  function initialiseWidget(roomid) {
+    var selector = widgetIdsByRoom[String(roomid)];
+    if (!selector) return;
+
+    var widget = jQuery(selector);
+    if (widget.data('beds24Initialised')) return;
+
+    widget.bookWidget({
+      roomid: Number(roomid),
+      formAction: 'https://beds24.com/booking.php',
+      widgetLang: 'fr',
+      widgetType: 'BookingBox'
+    });
+    widget.data('beds24Initialised', true);
+  }
+
+  function showVoilerieWidget(roomid) {
+    var room = String(roomid);
+
+    jQuery('.voilerie-room-widget-panel').attr('hidden', true);
+    var panel = jQuery('.voilerie-room-widget-panel[data-roomid="' + room + '"]');
+    panel.removeAttr('hidden');
+
+    initialiseWidget(room);
+  }
+
+  var select = jQuery('#voilerie-apartment-select');
+  showVoilerieWidget(select.val());
+
+  select.on('change', function () {
+    showVoilerieWidget(this.value);
+  });
+});
+</script>
+<script>
+(function () {
+  var currentLang = "fr";
+  var targets = {"en":"en/index.html","de":"de/index.html","es":"es/index.html"};
+  var labels = {"en":"Prefer English?","de":"Lieber auf Deutsch?","es":"¿Prefiere español?"};
+  var linkLabels = {"en":"View this page in English","de":"Diese Seite auf Deutsch ansehen","es":"Ver esta página en español"};
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest && event.target.closest(".lang-switch a");
+    if (!link) return;
+    try { localStorage.setItem("preferredLanguage", link.getAttribute("lang") || ""); } catch (e) {}
+  });
+  try {
+    var preferred = localStorage.getItem("preferredLanguage");
+    var browserLang = (navigator.languages && navigator.languages[0] || navigator.language || "").slice(0,2);
+    var target = targets[browserLang];
+    if (!preferred && target) {
+      var banner = document.createElement("div");
+      banner.className = "lang-suggest";
+      banner.setAttribute("role", "status");
+      banner.innerHTML = '<span>' + labels[browserLang] + ' <a href="' + target + '" lang="' + browserLang + '" hreflang="' + browserLang + '">' + linkLabels[browserLang] + '</a></span><button type="button" aria-label="Close">×</button>';
+      document.body.appendChild(banner);
+      window.setTimeout(function () { banner.classList.add("is-visible"); }, 700);
+      banner.querySelector("button").addEventListener("click", function () {
+        banner.classList.remove("is-visible");
+        localStorage.setItem("preferredLanguage", currentLang);
+      });
+    }
+  } catch (e) {}
+})();
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"5d4a2b3707ba46eeae02974f51488e43","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
