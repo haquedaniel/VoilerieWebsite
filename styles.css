@@ -749,3 +749,112 @@ div.bookWidget-voilerie-apt5 {
     font-size: 16px !important;
   }
 }
+
+.visitor-gate {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background: #f7f2ea;
+}
+
+.visitor-gate-inner {
+  max-width: 760px;
+}
+
+.visitor-form {
+  margin-top: 28px;
+  display: grid;
+  gap: 16px;
+}
+
+.visitor-form label {
+  display: grid;
+  gap: 8px;
+  font-weight: 700;
+  color: #16383d;
+}
+
+.visitor-form input,
+.visitor-form select {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid rgba(22, 56, 61, 0.16);
+  border-radius: 14px;
+  padding: 0 16px;
+  background: #fffdf8;
+  color: #16383d;
+  font: inherit;
+}
+
+.checkbox-line {
+  display: flex !important;
+  grid-template-columns: none !important;
+  align-items: flex-start;
+  gap: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.45;
+}
+
+.checkbox-line input {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+  margin-top: 2px;
+}
+
+.form-message {
+  margin-top: 16px;
+  font-weight: 700;
+}
+
+.form-message.success {
+  color: #148c9a;
+}
+
+.form-message.error,
+.field-error {
+  color: #a94442;
+}
+
+.visitor-gate.is-complete {
+  min-height: auto;
+  padding: 48px 0;
+}
+
+.visitor-gate.is-complete .visitor-form,
+.visitor-gate.is-complete > .container > p,
+.visitor-gate.is-complete h1 {
+  display: none;
+}
+
+.visitor-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 32px 0;
+}
+
+.visitor-card-grid article,
+.boat-access {
+  padding: 24px;
+  border-radius: 22px;
+  background: #fffdf8;
+  border: 1px solid rgba(22, 56, 61, 0.12);
+  box-shadow: 0 18px 44px rgba(22, 56, 61, 0.08);
+}
+
+.boat-code {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 18px;
+  background: #16383d;
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 760px) {
+  .visitor-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
