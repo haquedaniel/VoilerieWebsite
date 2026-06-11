@@ -156,7 +156,7 @@
     .visitor-quick-links {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 12px;
       margin-top: 24px;
     }
@@ -329,13 +329,13 @@
       display: grid;
       grid-template-columns: minmax(280px, 0.82fr) minmax(420px, 1.18fr);
       gap: clamp(22px, 3vw, 34px);
-      align-items: stretch;
+      align-items: start;
       margin-top: 28px;
     }
 
     .visitor-overview-grid .visitor-block {
       margin-top: 0;
-      height: 100%;
+      height: auto;
     }
 
     .visitor-overview-grid .visitor-boat-feature {
@@ -365,7 +365,7 @@
     .visitor-overview-grid #infos {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     @media (max-width: 900px) {
@@ -447,11 +447,10 @@
 
             <label for="visitor-apartment">
               Appartement
-              <select id="visitor-apartment" name="apartment">
-                <option value="">Sélectionner, si vous le souhaitez</option>
-                <option value="Un jardin sur la mer">Un jardin sur la mer</option>
-                <option value="Un balcon sur la mer">Un balcon sur la mer</option>
-                <option value="Le refuge sous les toits">Le refuge sous les toits</option>
+              <select id="visitor-apartment" name="apartment" required>
+                <option value="Apt 2 - Un jardin sur le port">Apt 2 - Un jardin sur le port</option>
+                <option value="Apt 4 - Un balcon sur la mer">Apt 4 - Un balcon sur la mer</option>
+                <option value="Apt 5 - Un refuge sous les toits">Apt 5 - Un refuge sous les toits</option>
               </select>
             </label>
 
@@ -519,11 +518,12 @@
             </article>
             <article>
               <h3>Arrivée et départ</h3>
-              <p>Arrivée à partir de 15h. Départ avant 11h, sauf accord préalable.</p>
+              <p>Arrivée à partir de 16h. Départ avant 10h, sauf accord préalable.</p>
             </article>
             <article>
               <h3>Wi‑Fi</h3>
-              <p>Réseau : <strong>à compléter</strong><br />Mot de passe : <strong>à compléter</strong></p>
+              <p>Réseau : <strong>Le Clos de la Voilerie</strong><br />Mot de passe : <strong>Magellan</strong></p>
+
             </article>
           </div>
         </section>
@@ -533,21 +533,21 @@
             <p class="eyebrow light">l’expérience signature</p>
             <h2>Une petite barque pour vivre le Goyen autrement.</h2>
             <p>
-              La barque est mise à disposition comme un extra gratuit pour les visiteurs du Clos de la Voilerie,
+              La barque est mise à disposition gratuitement pour les visiteurs du Clos de la Voilerie,
               uniquement lorsque les conditions météo et de marée le permettent.
             </p>
             <p>
-              Avant d’afficher le code du cadenas, merci de lire les règles d’utilisation. Elles sont simples,
+              Pour obtenir le code du cadenas, merci de lire les règles d’utilisation. Elles sont simples,
               mais importantes : l’estuaire reste un vrai milieu marin.
             </p>
 
             <ul class="boat-rule-list">
               <li>Utilisation uniquement par temps calme et de jour.</li>
-              <li>Gilets de sauvetage obligatoires pour tous les occupants.</li>
+              <li>Les gilets de sauvetage sont obligatoires pour tous les occupants.</li>
               <li>Les enfants doivent toujours être accompagnés par un adulte.</li>
               <li>Ne pas utiliser la barque après consommation d’alcool.</li>
               <li>Vérifiez la météo, la marée et le courant avant toute sortie.</li>
-              <li>La barque doit être ramenée, attachée et verrouillée après utilisation.</li>
+              <li>La barque doit être ramenée à sa place, attachée et verrouillée après utilisation.</li>
             </ul>
 
             <div class="boat-access-panel">
@@ -561,12 +561,12 @@
               </button>
 
               <div class="boat-code" id="boat-code" hidden>
-                Code cadenas : <strong>0000</strong>
+                Code du cadenas : <strong>4545</strong>
               </div>
             </div>
 
             <p class="visitor-note">
-              Remplacez <strong>0000</strong> par le vrai code avant publication, ou contactez-nous pour l’obtenir si vous préférez ne pas l’afficher ici.
+              Ce code est réservé aux visiteurs du Clos de la Voilerie ayant lu et accepté les conditions d’utilisation de la barque.
             </p>
           </div>
 
@@ -582,14 +582,35 @@
             <div>
               <p class="eyebrow dark">règlement intérieur</p>
               <h2>Quelques règles simples pour le confort de tous</h2>
+             <h4> Vous séjournez dans un bâtiment
+historique du port d’Audierne-
+Plouhinec érigé en 1868, cette bâtisse
+abritait la voilerie du port.
+Dans cette résidence se côtoient des
+résidents à l’année, des vacanciers et
+des professionnels en déplacement.
+Pour le confort de chacun, merci de
+respecter ces quelques règles. </h4>
               <ul class="visitor-rule-list">
-                <li>Merci de respecter le calme de la résidence, notamment le soir et tôt le matin.</li>
+                
+                <li>Merci de respecter le calme de la résidence, notamment le soir et tôt le matin (entre 22h et 8h).</li>
+                <li>Enlever ses chaussures.</li>              
                 <li>Le logement est non-fumeur.</li>
+                <li>Eviter le bruit dans les parties communes</li>
                 <li>Merci de fermer les fenêtres, éteindre le chauffage et couper les lumières lors de vos absences.</li>
-                <li>Les déchets doivent être déposés dans les bacs prévus à cet effet.</li>
                 <li>En cas de casse ou de problème, prévenez-nous rapidement pour que nous puissions intervenir.</li>
-                <li>Le ménage de sortie est prévu, mais le logement doit être laissé dans un état raisonnable.</li>
+
               </ul>
+              <h4>Procedure de départ</h4>
+
+                <ul class="visitor-rule-list">
+                  <li>Heure de départ : 10h</li>
+                  <li>Défaire les lits et rassembler le linge utilisé dans la salle de bain</li>
+                  <li>Fermer toutes les fenêtres et couper les chauffages</li>
+                  <li>Vider les poubelles : conteneurs à droite en sortant de l’immeuble</li>
+                  <li>Le ménage de sortie est prévu, mais le logement doit être laissé dans un état raisonnable.</li>
+                  <li>Remettre les clefs dans la boîte à clefs et brouiller le code</li>
+                </ul>
             </div>
             <figure class="visitor-secondary-image">
               <img src="assets/visitor-rowboat-portrait.png" alt="Moment calme sur l’eau pendant un séjour au Clos de la Voilerie" />
@@ -604,12 +625,12 @@
               <h2>Revenir en direct</h2>
               <p>
                 Pour un prochain séjour en Bretagne, contactez-nous en direct avant de réserver sur une plateforme.
-                Nous pourrons vous proposer nos meilleures conditions selon les dates disponibles.
+                Nous pourrons vous proposer nos meilleures conditions selon les dates disponibles.  Ce code vous donnera accès à une reduction de 5% supplementaire sur votre prochain séjour, pour vous ou pour vos proches.
               </p>
             </div>
             <div class="visitor-offer-code">
               Code à rappeler
-              <span>VOILERIE-DIRECT</span>
+              <span>VOILERIE-DIRECT5</span>
             </div>
           </div>
         </section>
