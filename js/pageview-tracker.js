@@ -28,12 +28,15 @@
       method: "POST",
       headers: {
         "apikey": SUPABASE_ANON_KEY,
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
         "Content-Type": "application/json",
         "Prefer": "return=minimal"
       },
       body: JSON.stringify(payload),
       keepalive: true
-    }).catch(() => {});
+    }).catch(function (error) {
+      console.warn("Pageview tracking failed", error);
+    });
   }
 
   trackPageView();
