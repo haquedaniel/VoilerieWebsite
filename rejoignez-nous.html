@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conciergerie ménage Cap Sizun</title>
+  <style>
+    :root {
+      --ink: #07364f;
+      --ink-2: #0b5673;
+      --teal: #00718f;
+      --mint: #b7ddcf;
+      --mint-2: #e4f3ee;
+      --sand: #f7efe5;
+      --paper: #fffaf3;
+      --line: rgba(7, 54, 79, 0.15);
+      --shadow: 0 28px 70px rgba(7, 54, 79, 0.15);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, #fff7ec 0, #f6efe7 34%, #eaf4f1 100%);
+      color: var(--ink);
+      font-family: Avenir, "Avenir Next", Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.42;
+      padding: 28px;
+    }
+
+    .sheet {
+      width: min(100%, 980px);
+      margin: 0 auto;
+      background: var(--paper);
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+      isolation: isolate;
+    }
+
+    .sheet::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 90% 5%, rgba(183, 221, 207, 0.85) 0 110px, transparent 112px),
+        radial-gradient(circle at 12% 88%, rgba(0, 113, 143, 0.10) 0 180px, transparent 182px),
+        linear-gradient(135deg, rgba(255,255,255,0.6), transparent 45%);
+      z-index: -2;
+    }
+
+    .wave {
+      position: absolute;
+      right: -170px;
+      top: 130px;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(0,113,143,0.17), rgba(183,221,207,0.72));
+      z-index: -1;
+    }
+
+    header {
+      padding: 54px 58px 26px;
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .headline {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 5.1vw, 4.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      color: var(--ink);
+      max-width: 760px;
+    }
+
+    .headline .highlight {
+      color: var(--teal);
+      text-decoration: underline;
+      text-decoration-thickness: 5px;
+      text-underline-offset: 9px;
+      text-decoration-color: rgba(0, 113, 143, 0.35);
+    }
+
+    .badge {
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--ink);
+      color: white;
+      display: grid;
+      place-items: center;
+      padding: 22px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.12;
+      text-align: center;
+      transform: rotate(3deg);
+      box-shadow: 0 20px 42px rgba(7, 54, 79, 0.22);
+    }
+
+    main { padding: 0 58px 54px; }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-top: 8px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(7, 54, 79, 0.10);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 12px 36px rgba(7, 54, 79, 0.07);
+      backdrop-filter: blur(6px);
+    }
+
+    .lead {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+
+    .tools {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .tool {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 12px;
+      align-items: center;
+      min-height: 52px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: linear-gradient(90deg, rgba(228,243,238,0.95), rgba(255,255,255,0.78));
+      border: 1px solid rgba(0, 113, 143, 0.12);
+      font-weight: 750;
+      color: var(--ink-2);
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--teal);
+      display: grid;
+      place-items: center;
+    }
+
+    .icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: white;
+      stroke-width: 2.1;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section-title {
+      margin: 0 0 16px;
+      font-size: 1.45rem;
+      color: var(--ink);
+      font-weight: 850;
+      letter-spacing: -0.02em;
+    }
+
+    .profiles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .profile-pill {
+      border-radius: 20px;
+      padding: 18px;
+      min-height: 124px;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+      background: var(--mint-2);
+      border: 1px solid rgba(0, 113, 143, 0.12);
+      font-weight: 720;
+      color: var(--ink-2);
+    }
+
+    .profile-pill:nth-child(2) { background: #fff5e9; }
+    .profile-pill:nth-child(3) { background: #eef7f4; }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .step {
+      position: relative;
+      border-radius: 22px;
+      padding: 20px 18px 18px;
+      min-height: 200px;
+      background: white;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .step::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 7px;
+      background: linear-gradient(90deg, var(--teal), var(--mint));
+    }
+
+    .step .icon {
+      margin-bottom: 14px;
+      background: var(--ink-2);
+    }
+
+    .step p, .card p, .profile-pill p { margin: 0; }
+
+    .details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .detail-card {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 16px;
+      align-items: start;
+      border-radius: 24px;
+      padding: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.92), rgba(228,243,238,0.75));
+      border: 1px solid rgba(7, 54, 79, 0.10);
+    }
+
+    .detail-card .icon {
+      width: 54px;
+      height: 54px;
+    }
+
+    .detail-card .icon svg { width: 29px; height: 29px; }
+
+    .closing {
+      margin-top: 28px;
+      border-radius: 28px;
+      background: var(--ink);
+      color: white;
+      padding: 30px 34px;
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 22px;
+      align-items: center;
+      box-shadow: 0 20px 45px rgba(7, 54, 79, 0.20);
+    }
+
+    .closing .mark {
+      width: 70px;
+      height: 70px;
+      border: 2px solid rgba(255,255,255,0.78);
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.2rem;
+      color: var(--mint);
+    }
+
+    .closing p {
+      margin: 0;
+      font-size: clamp(1.15rem, 2.4vw, 1.85rem);
+      line-height: 1.25;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+    }
+
+    strong { color: var(--teal); }
+
+    @media (max-width: 850px) {
+      body { padding: 14px; }
+      header, main { padding-left: 24px; padding-right: 24px; }
+      header { grid-template-columns: 1fr; padding-top: 34px; }
+      .badge { width: 170px; justify-self: end; }
+      .intro, .details { grid-template-columns: 1fr; }
+      .profiles { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .step { min-height: unset; }
+      .closing { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .sheet { width: 210mm; min-height: 297mm; border-radius: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <article class="sheet">
+    <div class="wave"></div>
+    <header>
+      <h1 class="headline">Nous travaillons sur la création d’une <span class="highlight">conciergerie en ligne locale Cap Sizun et le Haut pays Bigouden.</span></h1>
+      <div class="badge">Si cette collaboration vous intéresse, nous aimerions en discuter avec vous prochainement.</div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="card">
+          <p class="lead">Nous espérons pouvoir lancer notre plate-forme en septembre. Il s’agira de proposer aux propriétaires de logements saisonniers un ensemble d’outils de gestion : le tout sera associé à un logiciel de gestion automatique du ménage. Pour cette partie, nous aimerions éventuellement travailler avec vous.</p>
+        </div>
+        <div class="tools" aria-label="outils de gestion">
+          <div class="tool"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></span><span>calendrier centralisé</span></div>
+          <div class="tool"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9 20v-6h6v6"/></svg></span><span>site web</span></div>
+          <div class="tool"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 13h5"/></svg></span><span>plate-forme de réservation en directe</span></div>
+          <div class="tool"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5M12 16V8M16 16v-7"/></svg></span><span>dashboard de rentabilité</span></div>
+          <div class="tool"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17l6-6 4 4 6-8"/><path d="M14 7h6v6"/></svg></span><span>aide à l’optimisation des prix</span></div>
+                  <div class="tool"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 17l6-6 4 4 6-8"/><path d="M14 7h6v6"/></svg></span><span>gestion automatique de ménage</span></div>
+        </div>
+      </section>
+
+      <section class="section card">
+        <p>Les agents d’entretien qui travailleront avec nous peuvent être des indépendants auto entrepreneurs, des particuliers qui souhaitent être payés en CESU, ou autres, suivant les attentes de chacun.</p>
+        <div class="profiles">
+          <div class="profile-pill"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 21h10"/><path d="M9 21V9a3 3 0 0 1 6 0v12"/><path d="M5 12h14"/></svg></span><p>indépendants auto entrepreneurs</p></div>
+          <div class="profile-pill"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><p>particuliers qui souhaitent être payés en CESU</p></div>
+          <div class="profile-pill"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9-9.5C1.7 8.2 3.7 5 7 5c2 0 3.2 1.1 5 3 1.8-1.9 3-3 5-3 3.3 0 5.3 3.2 4 6.5C19 16.5 12 21 12 21Z"/></svg></span><p>ou autres, suivant les attentes de chacun</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Dans les grandes lignes, comment cela fonctionne :</h2>
+        <div class="timeline">
+          <div class="step"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg></span><p>Les agents inscrits sur la plate-forme remplissent une fiche avec leurs coordonnées, leurs compétences, leur tarif horaire, leur zone d'intervention.</p></div>
+          <div class="step"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h14v12H8l-3 3V4Z"/><path d="M9 8h6M9 12h4"/></svg></span><p>Ils reçoivent un message (SMS/WhatsApp) lors de chaque réservation avec les détails de la mission et le montant total de la prestation.</p></div>
+          <div class="step"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><p>Ils répondent favorablement ou non en fonction de leur disponibilité.</p></div>
+          <div class="step"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg></span><p>Ils reçoivent un message de confirmation avec une fiche d'intervention contenant les points de ménage détaillés à effectuer.</p></div>
+           <div class="step"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg></span><p>A la fin du mois, l'agent génère automatiquement une demande de paiement, qui est transmise aux propriétaires pour paiement sous cinq jours.</p></div>
+
+        </div>
+      </section>
+
+      <section class="section details">
+        <div class="detail-card">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+          <p>Les agents n’ont aucun frais et proposent leur tarif horaire lors de leur inscription sur la plateforme, le déplacement est limité à 8 km autour d’une zone choisie par l’agent.  Si l’intervention est plus loin, s’ajoutent alors des indemnités de déplacement.</p>
+        </div>
+        <div class="detail-card">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="M4 16l4-4 3 3 3-3 6 6"/></svg></span>
+          <p>À la fin de chaque prestation, le propriétaire reçoit un rapport avec photos que l'agent aura rempli sur la plate-forme. Il peut s'il le souhaite noter le profil de l'agent qui est intervenu chez lui et le recommander aux autres utilisateurs de la plate-forme.</p>
+        </div>
+      </section>
+
+      <section class="closing">
+        <div class="mark" aria-hidden="true">♡</div>
+        <p>Si cette collaboration vous intéresse, nous aimerions en discuter avec vous prochainement.</p>
+      </section>
+    </main>
+  </article>
+</body>
+</html>
