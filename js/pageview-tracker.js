@@ -1,9 +1,10 @@
 (function () {
   const SUPABASE_URL = "https://kldaktksrbskumbhsyji.supabase.co";
-  const SUPABASE_ANON_KEY = "sb_publishable_kOTDbqDJfLwRRDlxI2na4A_zwQxiKQL";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtsZGFrdGtzcmJza3VtYmhzeWppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyNjk5NTksImV4cCI6MjA5Njg0NTk1OX0.xSKlYvhijLg2l9jatoVGvjnCw2tWLGOl7kQHnS-DK5U";
+
 
   const currentScript = document.currentScript;
-  const SITE_NAME = currentScript?.dataset?.site || "default_site";
+  const SITE_NAME = currentScript?.dataset?.site || "leclosdelavoilerie";
 
   function getParam(name) {
     return new URLSearchParams(window.location.search).get(name);
@@ -28,6 +29,7 @@
       method: "POST",
       headers: {
         "apikey": SUPABASE_ANON_KEY,
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
         "Content-Type": "application/json",
         "Prefer": "return=minimal"
       },
