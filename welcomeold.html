@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script
+  defer
+  src="/js/pageview-tracker.js"
+  data-site="leclosdelavoilerie"
+></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guest guide — Le Clos de la Voilerie</title>
+  <meta name="description" content="Private guest guide for Le Clos de la Voilerie: Wi‑Fi, practical information, house rules and visitor offers.">
+  <style>
+    :root {
+      --ink: #203137;
+      --muted: #647174;
+      --deep: #12343b;
+      --deep-2: #0d2930;
+      --gold: #c59b58;
+      --gold-soft: #efe2c8;
+      --cream: #f6f1e8;
+      --paper: #fffaf1;
+      --white: #ffffff;
+      --line: rgba(32,49,55,.14);
+      --shadow: 0 22px 70px rgba(18, 52, 59, .16);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 14% 0%, rgba(197,155,88,.22), transparent 34rem),
+        linear-gradient(180deg, #fbf7ef 0%, var(--cream) 46%, #ffffff 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    .serif { font-family: Georgia, "Times New Roman", serif; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(246,241,232,.86);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--deep);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .navlinks a { text-decoration: none; }
+    .navlinks a:hover { color: var(--deep); }
+    .lang {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      color: var(--deep);
+      font-weight: 700;
+      background: rgba(255,255,255,.5);
+    }
+
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 70px 22px 38px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .72fr);
+      gap: 34px;
+      align-items: stretch;
+    }
+    .hero-copy {
+      min-height: 520px;
+      border-radius: var(--radius);
+      padding: clamp(32px, 5vw, 58px);
+      background:
+        linear-gradient(135deg, rgba(18,52,59,.94), rgba(18,52,59,.78)),
+        url("/images/voilerie-estuaire.jpg") center/cover;
+      color: var(--white);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-copy::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      bottom: -120px;
+      width: 310px;
+      height: 310px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--gold-soft);
+      margin: 0 0 16px;
+    }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 7vw, 78px);
+      line-height: .96;
+      letter-spacing: -.045em;
+      margin: 0 0 22px;
+      max-width: 760px;
+      font-weight: 400;
+    }
+    .hero-copy p {
+      max-width: 620px;
+      margin: 0;
+      color: rgba(255,255,255,.88);
+      font-size: 18px;
+    }
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 34px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.24);
+      background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.9);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-size: 14px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(255,255,255,.76);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .access-card { padding: 28px; }
+    .access-card h2 {
+      margin: 0 0 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 32px;
+      line-height: 1.1;
+      font-weight: 400;
+      color: var(--deep);
+    }
+    .access-card p { color: var(--muted); margin: 0 0 22px; }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--deep);
+      margin: 15px 0 7px;
+    }
+    input, select {
+      width: 100%;
+      border: 1px solid rgba(32,49,55,.18);
+      border-radius: 14px;
+      padding: 13px 14px;
+      font: inherit;
+      color: var(--ink);
+      background: #fff;
+      outline: none;
+    }
+    input:focus, select:focus { border-color: rgba(197,155,88,.85); box-shadow: 0 0 0 4px rgba(197,155,88,.16); }
+    .checks { margin: 16px 0 18px; display: grid; gap: 10px; }
+    .check {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .check input { width: 18px; margin-top: 1px; }
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 22px;
+      background: var(--gold);
+      color: #fff;
+      font-weight: 900;
+      font-size: 15px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      width: 100%;
+      transition: transform .16s ease, box-shadow .16s ease;
+      box-shadow: 0 10px 24px rgba(197,155,88,.28);
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(197,155,88,.32); }
+    .fineprint { font-size: 12px; color: var(--muted); margin-top: 14px !important; }
+
+    main { max-width: 1120px; margin: 0 auto; padding: 8px 22px 70px; }
+    .guide-intro {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 22px;
+      margin: 18px 0 26px;
+      align-items: stretch;
+    }
+    .mini-card {
+      padding: 26px;
+      border-radius: 24px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+    .mini-card h2, section h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.02;
+      margin: 0 0 12px;
+      font-weight: 400;
+      color: var(--deep);
+      letter-spacing: -.035em;
+    }
+    .mini-card p { margin: 0; color: var(--muted); }
+    .quicklinks {
+      padding: 26px;
+      border-radius: 24px;
+      background: #fff;
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .quicklink {
+      text-decoration: none;
+      padding: 18px;
+      border-radius: 18px;
+      background: #f8f4ec;
+      border: 1px solid transparent;
+      min-height: 112px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .quicklink strong { display: block; color: var(--deep); font-size: 16px; }
+    .quicklink span { color: var(--muted); font-size: 13px; }
+    .quicklink:hover { border-color: rgba(197,155,88,.5); }
+
+    section {
+      scroll-margin-top: 90px;
+      margin: 28px 0;
+      padding: clamp(26px, 4vw, 42px);
+      border-radius: var(--radius);
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 44px rgba(18,52,59,.07);
+    }
+    .section-grid {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--gold);
+      margin: 0 0 12px;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .info-box {
+      background: #f8f4ec;
+      border-radius: 20px;
+      padding: 20px;
+      border: 1px solid rgba(32,49,55,.08);
+    }
+    .info-box h3 { margin: 0 0 8px; font-size: 18px; color: var(--deep); }
+    .info-box p { margin: 0; color: var(--muted); }
+    .wifi {
+      background: linear-gradient(135deg, #12343b, #1b4d57);
+      color: #fff;
+    }
+    .wifi h3, .wifi p { color: #fff; }
+    .wifi code {
+      display: inline-block;
+      margin-top: 8px;
+      background: rgba(255,255,255,.14);
+      padding: 6px 9px;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+    ul.rules {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+    ul.rules li { margin: 0 0 10px; }
+    .notice {
+      margin-top: 22px;
+      padding: 20px;
+      border-radius: 20px;
+      background: var(--paper);
+      border: 1px solid rgba(197,155,88,.26);
+    }
+    .notice h3 { margin: 0 0 8px; color: var(--deep); }
+    .notice p { margin: 0; color: var(--muted); }
+    .offer-code {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 1px dashed rgba(18,52,59,.35);
+      background: #fff;
+      color: var(--deep);
+      font-weight: 900;
+      letter-spacing: .06em;
+    }
+    footer {
+      padding: 30px 22px 46px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .hidden-guide { display: none; }
+    .hidden-guide.is-visible { display: block; }
+    .success {
+      display: none;
+      margin: 14px 0 0;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(21,128,61,.09);
+      color: #166534;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .success.is-visible { display: block; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 42px; }
+      .hero-copy { min-height: auto; }
+      .guide-intro, .section-grid { grid-template-columns: 1fr; }
+      .quicklinks, .info-grid { grid-template-columns: 1fr; }
+      .nav { align-items: flex-start; }
+      .navlinks { flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+    }
+    @media (max-width: 560px) {
+      .nav { padding: 12px 14px; }
+      .hero, main { padding-left: 14px; padding-right: 14px; }
+      .hero-copy, .access-card, section { border-radius: 22px; }
+      .navlinks a:not(.lang) { display: none; }
+      h1 { font-size: 46px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="/">Le Clos de la Voilerie</a>
+      <div class="navlinks">
+        <a href="/">Back to website</a>
+        <a href="#practical">Practical info</a>
+        <a href="#rules">House rules</a>
+        <a href="#offers">Offers</a>
+        <a class="lang" href="/bienvenue" hreflang="fr">FR</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="page-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Guest guide</p>
+      <h1 id="page-title">Your stay starts here.</h1>
+      <p>Access the private guide for Le Clos de la Voilerie: practical information, Wi‑Fi, house rules and visitor offers to help you prepare for your stay.</p>
+      <div class="hero-pills" aria-label="Guide contents">
+        <span class="pill">Wi‑Fi code</span>
+        <span class="pill">Arrival & departure</span>
+        <span class="pill">Local suggestions</span>
+        <span class="pill">House rules</span>
+      </div>
+    </div>
+
+    <aside class="card access-card" aria-label="Access form">
+      <h2>Access your guide</h2>
+      <p>Please enter a few details so we can open the visitor guide for your stay.</p>
+
+      <!-- If you use Formspree or another form tool, replace action="#" with your real endpoint. -->
+          <form id="visitor-form" class="visitor-form" action="https://formspree.io/f/xdavzneb" method="POST">
+        <label for="guestName">Name</label>
+        <input id="guestName" name="name" type="text" autocomplete="name" required>
+
+        <label for="guestEmail">Email</label>
+        <input id="guestEmail" name="email" type="email" autocomplete="email" required>
+
+        <label for="apartment">Apartment</label>
+        <select id="apartment" name="apartment" required>
+          <option value="">Choose your apartment</option>
+          <option>Apt 2 — A garden overlooking the port</option>
+          <option>Apt 4 — A balcony over the sea</option>
+          <option>Apt 5 — A hideaway under the rooftops</option>
+        </select>
+
+        <label for="bookingRef">Booking reference, if you have it</label>
+        <input id="bookingRef" name="booking_reference" type="text" autocomplete="off">
+
+        <div class="checks">
+          <label class="check">
+            <input type="checkbox" name="stay_info_consent" required>
+            <span>I agree that this information may be used to send me useful information related to my stay.</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="marketing_consent">
+            <span>I agree to occasionally receive offers and information from Le Clos de la Voilerie.</span>
+          </label>
+        </div>
+
+        <button class="btn" type="submit">Access the guest guide</button>
+        <p class="fineprint">Your information will not be published. Future offers will only be sent if you tick the corresponding option.</p>
+        <p id="formSuccess" class="success">Thank you — the guide is now available below.</p>
+      </form>
+    </aside>
+  </section>
+
+  <main id="guide" class="hidden-guide">
+    <div class="guide-intro">
+      <div class="mini-card">
+        <p class="section-label">Useful information</p>
+        <h2>Your stay guide</h2>
+        <p>Keep this page handy during your stay. It is not accessible from the website menus.</p>
+      </div>
+      <div class="quicklinks" aria-label="Quick links">
+        <a class="quicklink" href="#practical"><strong>Practical information</strong><span>Contact, check‑in, Wi‑Fi</span></a>
+        <a class="quicklink" href="#rules"><strong>House rules</strong><span>A few simple rules for everyone’s comfort</span></a>
+        <a class="quicklink" href="#offers"><strong>Visitor offers</strong><span>Come back by booking direct</span></a>
+      </div>
+    </div>
+
+    <section id="practical">
+      <div class="section-grid">
+        <div>
+          <p class="section-label">Practical information</p>
+          <h2>The essentials for your stay</h2>
+        </div>
+        <div class="info-grid">
+          <article class="info-box">
+            <h3>Contact</h3>
+            <p>If needed:<br><strong>06 33 83 55 25</strong></p>
+          </article>
+          <article class="info-box">
+            <h3>Arrival & departure</h3>
+            <p>Arrival from <strong>4:00 pm</strong>.<br>Departure before <strong>10:00 am</strong>, unless agreed in advance.</p>
+          </article>
+          <article class="info-box wifi">
+            <h3>Wi‑Fi</h3>
+            <p>Network: <strong>Le Clos de la Voilerie</strong><br>Password:<br><code>Magellan</code></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules">
+      <div class="section-grid">
+        <div>
+          <p class="section-label">House rules</p>
+          <h2>A few simple rules for everyone’s comfort</h2>
+        </div>
+        <div>
+          <p>You are staying in a historic building on the Audierne‑Plouhinec harbour. Built in 1868, this building once housed the port’s sail‑making workshop. Today, the residence is shared by year‑round residents, holidaymakers and people travelling for work. For everyone’s comfort, thank you for respecting these few rules.</p>
+          <ul class="rules">
+            <li>Please respect the calm of the residence, especially in the evening and early morning, between 10:00 pm and 8:00 am.</li>
+            <li>Please take off your shoes inside the apartment.</li>
+            <li>The accommodation is non‑smoking.</li>
+            <li>Please avoid noise in the shared areas.</li>
+            <li>Please close the windows, turn off the heating and switch off the lights when you are away.</li>
+            <li>If anything is broken or if there is a problem, please let us know quickly so that we can help.</li>
+          </ul>
+
+          <div class="notice">
+            <h3>Departure procedure</h3>
+            <ul class="rules">
+              <li>Departure time: 10:00 am.</li>
+              <li>Strip the beds and gather the used linen in the bathroom.</li>
+              <li>Close all windows and turn off the heating.</li>
+              <li>Empty the bins: the containers are on the right as you leave the building.</li>
+              <li>End‑of‑stay cleaning is included, but the apartment must be left in a reasonable condition.</li>
+              <li>Put the keys back in the key box and scramble the code.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="offers">
+      <div class="section-grid">
+        <div>
+          <p class="section-label">Visitor offers</p>
+          <h2>Come back by booking direct</h2>
+        </div>
+        <div>
+          <p>For a future stay in Brittany, contact us directly before booking through a platform. Depending on the available dates, we will be able to offer you our best conditions. This code gives you access to an additional 5% discount on your next stay, for you or for your friends and family.</p>
+          <span class="offer-code">VOILERIE-DIRECT5</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Le Clos de la Voilerie · Audierne‑Plouhinec<br>
+    Private guide reserved for guests of Le Clos de la Voilerie
+  </footer>
+
+  <script>
+    const accessForm = document.getElementById('accessForm');
+    const guide = document.getElementById('guide');
+    const success = document.getElementById('formSuccess');
+
+    accessForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      guide.classList.add('is-visible');
+      success.classList.add('is-visible');
+      setTimeout(() => guide.scrollIntoView({ behavior: 'smooth', block: 'start' }), 250);
+    });
+  </script>
+</body>
+</html>

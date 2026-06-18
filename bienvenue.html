@@ -3,14 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script
-  defer
-  src="/js/pageview-tracker.js"
-  data-site="leclosdelavoilerie"
-></script>
   <meta name="robots" content="noindex, nofollow" />
   <title>Guide visiteurs — Le Clos de la Voilerie</title>
-  <meta name="description" content="Guide privé pour les visiteurs du Clos de la Voilerie : barque, informations pratiques, règlement intérieur, offres et accès aux équipements." />
+  <meta name="description" content="Guide privé pour les visiteurs du Clos de la Voilerie : informations pratiques, recommandations locales, règlement intérieur, offres et accès aux équipements." />
   <link href="styles.css" rel="stylesheet" />
   <style>
     /* Page-specific visitor portal styles */
@@ -321,8 +316,6 @@
       object-fit: cover;
     }
 
-
-
     /* Final polish: essentials left, signature boat panel right */
     .visitor-quick-links .button-dark {
       background: #16383d !important;
@@ -373,12 +366,134 @@
       justify-content: flex-start;
     }
 
+    /* Recommendations / local tips */
+    .visitor-reco-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .visitor-reco-card,
+    .visitor-link-card {
+      padding: 24px;
+      border-radius: 24px;
+      background: #fffdf8;
+      border: 1px solid rgba(22, 56, 61, 0.12);
+      box-shadow: 0 18px 44px rgba(22, 56, 61, 0.08);
+    }
+
+    .visitor-reco-head {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .visitor-reco-icon {
+      width: 54px;
+      height: 54px;
+      min-width: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: #fffdf8;
+      font-size: 1.45rem;
+      box-shadow: inset 0 0 0 1px rgba(22, 56, 61, 0.08);
+    }
+
+    .visitor-reco-card h3,
+    .visitor-link-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .visitor-reco-card p,
+    .visitor-link-card p {
+      margin: 0;
+    }
+
+    .visitor-reco-note {
+      margin-top: 24px;
+      padding: 20px 22px;
+      border-radius: 22px;
+      background: rgba(20, 140, 154, 0.08);
+      border: 1px solid rgba(20, 140, 154, 0.14);
+    }
+
+    .visitor-link-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .visitor-link-list {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .visitor-link-list li {
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(22, 56, 61, 0.08);
+    }
+
+    .visitor-link-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .visitor-link-list a {
+      color: #16383d;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .visitor-link-list a:hover {
+      text-decoration: underline;
+    }
+
+    .visitor-link-list small {
+      display: block;
+      margin-top: 4px;
+      opacity: 0.78;
+      line-height: 1.45;
+    }
+
+    /* Temporary mode: hide the boat until it is available */
+    body.no-boat .visitor-gate-boat,
+    body.no-boat #barque,
+    body.no-boat a[href="#barque"],
+    body.no-boat .visitor-secondary-image {
+      display: none !important;
+    }
+
+    body.no-boat .visitor-gate-grid,
+    body.no-boat .visitor-overview-grid,
+    body.no-boat .visitor-rule-grid {
+      grid-template-columns: 1fr;
+    }
+
+    body.no-boat .visitor-overview-grid {
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    body.no-boat .visitor-overview-grid #infos .visitor-card-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     @media (max-width: 900px) {
       .visitor-gate-grid,
       .visitor-overview-grid,
       .visitor-boat-feature,
       .visitor-rule-grid,
-      .visitor-offer-grid {
+      .visitor-offer-grid,
+      .visitor-reco-grid,
+      .visitor-link-grid {
         grid-template-columns: 1fr;
       }
 
@@ -405,37 +520,22 @@
       .visitor-gate-boat img {
         aspect-ratio: 16 / 11;
       }
-    }
-        /* Temporary mode: hide the boat until it is available */
-    body.no-boat .visitor-gate-boat,
-    body.no-boat #barque,
-    body.no-boat a[href="#barque"],
-    body.no-boat .visitor-secondary-image {
-      display: none !important;
-    }
 
-    body.no-boat .visitor-gate-grid,
-    body.no-boat .visitor-overview-grid,
-    body.no-boat .visitor-rule-grid {
-      grid-template-columns: 1fr;
-    }
+      .visitor-reco-head {
+        gap: 12px;
+      }
 
-    body.no-boat .visitor-overview-grid {
-      max-width: 980px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+      .visitor-reco-icon {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+        border-radius: 16px;
+      }
 
-    body.no-boat .visitor-overview-grid #infos .visitor-card-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    @media (max-width: 760px) {
       body.no-boat .visitor-overview-grid #infos .visitor-card-grid {
         grid-template-columns: 1fr;
       }
     }
-
   </style>
 </head>
 <body class="apartment-page visitor-page no-boat">
@@ -446,7 +546,7 @@
     </a>
     <nav>
       <a href="index.html">Retour au site</a>
-      <a href="#barque">Barque</a>
+      <a href="#decouvertes">Découvertes</a>
       <a href="#infos">Infos pratiques</a>
       <a href="#regles">Règlement</a>
       <a class="nav-cta" href="#offres">Offres</a>
@@ -464,7 +564,7 @@
           <h1>Votre séjour commence ici.</h1>
           <p>
             Accédez au guide privé du Clos de la Voilerie : informations pratiques, règlement intérieur
-            et offres visiteurs pour préparer votre séjour.
+            et idées de sorties pour préparer votre séjour.
           </p>
 
           <div id="visitor-form-status" class="visitor-form-status" role="status" hidden></div>
@@ -535,7 +635,7 @@
           </p>
 
           <div class="visitor-quick-links">
-            <a class="button button-dark" href="#barque">Accès barque</a>
+            <a class="button button-dark" href="#decouvertes">Découvertes</a>
             <a class="button button-outline" href="#infos">Infos pratiques</a>
             <a class="button button-outline" href="#regles">Règlement intérieur</a>
             <a class="button button-outline" href="#offres">Offres</a>
@@ -543,109 +643,291 @@
         </div>
 
         <div class="visitor-overview-grid">
-        <section class="visitor-section visitor-block soft" id="infos">
-          <p class="eyebrow dark">infos pratiques</p>
-          <h2>Les essentiels du séjour</h2>
-          <div class="visitor-card-grid">
-            <article>
-              <h3>Contact</h3>
-              <p>En cas de besoin :<br /><strong>06 33 83 55 25</strong></p>
-            </article>
-            <article>
-              <h3>Arrivée et départ</h3>
-              <p>Arrivée à partir de 16h. Départ avant 10h, sauf accord préalable.</p>
-            </article>
-            <article>
-              <h3>Wi‑Fi</h3>
-              <p>Réseau : <strong>Le Clos de la Voilerie</strong><br />Mot de passe : <strong>Magellan</strong></p>
+          <section class="visitor-section visitor-block soft" id="infos">
+            <p class="eyebrow dark">infos pratiques</p>
+            <h2>Les essentiels du séjour</h2>
+            <div class="visitor-card-grid">
+              <article>
+                <h3>Contact</h3>
+                <p>En cas de besoin :<br /><strong>06 33 83 55 25</strong></p>
+              </article>
+              <article>
+                <h3>Arrivée et départ</h3>
+                <p>Arrivée à partir de 16h. Départ avant 10h, sauf accord préalable.</p>
+              </article>
+              <article>
+                <h3>Wi‑Fi</h3>
+                <p>Réseau : <strong>Le Clos de la Voilerie</strong><br />Mot de passe : <strong>Magellan</strong></p>
+              </article>
+            </div>
+          </section>
 
-            </article>
-          </div>
-        </section>
+          <section class="visitor-section visitor-block visitor-boat-feature" id="barque">
+            <div>
+              <p class="eyebrow light">l’expérience signature</p>
+              <h2>Une petite barque pour vivre le Goyen autrement.</h2>
+              <p>
+                La barque est mise à disposition gratuitement pour les visiteurs du Clos de la Voilerie,
+                uniquement lorsque les conditions météo et de marée le permettent.
+              </p>
+              <p>
+                Pour obtenir le code du cadenas, merci de lire les règles d’utilisation. Elles sont simples,
+                mais importantes : l’estuaire reste un vrai milieu marin.
+              </p>
 
-        <section class="visitor-section visitor-block visitor-boat-feature" id="barque">
-          <div>
-            <p class="eyebrow light">l’expérience signature</p>
-            <h2>Une petite barque pour vivre le Goyen autrement.</h2>
-            <p>
-              La barque est mise à disposition gratuitement pour les visiteurs du Clos de la Voilerie,
-              uniquement lorsque les conditions météo et de marée le permettent.
-            </p>
-            <p>
-              Pour obtenir le code du cadenas, merci de lire les règles d’utilisation. Elles sont simples,
-              mais importantes : l’estuaire reste un vrai milieu marin.
-            </p>
+              <ul class="boat-rule-list">
+                <li>Utilisation uniquement par temps calme et de jour.</li>
+                <li>Les gilets de sauvetage sont obligatoires pour tous les occupants.</li>
+                <li>Les enfants doivent toujours être accompagnés par un adulte.</li>
+                <li>Ne pas utiliser la barque après consommation d’alcool.</li>
+                <li>Vérifiez la météo, la marée et le courant avant toute sortie.</li>
+                <li>La barque doit être ramenée à sa place, attachée et verrouillée après utilisation.</li>
+              </ul>
 
-            <ul class="boat-rule-list">
-              <li>Utilisation uniquement par temps calme et de jour.</li>
-              <li>Les gilets de sauvetage sont obligatoires pour tous les occupants.</li>
-              <li>Les enfants doivent toujours être accompagnés par un adulte.</li>
-              <li>Ne pas utiliser la barque après consommation d’alcool.</li>
-              <li>Vérifiez la météo, la marée et le courant avant toute sortie.</li>
-              <li>La barque doit être ramenée à sa place, attachée et verrouillée après utilisation.</li>
-            </ul>
+              <div class="boat-access-panel">
+                <label class="checkbox-line" for="boat-accept">
+                  <input type="checkbox" id="boat-accept" />
+                  <span>J’ai lu et j’accepte les conditions d’utilisation de la barque.</span>
+                </label>
 
-            <div class="boat-access-panel">
-              <label class="checkbox-line" for="boat-accept">
-                <input type="checkbox" id="boat-accept" />
-                <span>J’ai lu et j’accepte les conditions d’utilisation de la barque.</span>
-              </label>
+                <button type="button" class="button button-light" id="show-boat-code">
+                  Afficher le code
+                </button>
 
-              <button type="button" class="button button-light" id="show-boat-code">
-                Afficher le code
-              </button>
-
-              <div class="boat-code" id="boat-code" hidden>
-                Code du cadenas : <strong>4545</strong>
+                <div class="boat-code" id="boat-code" hidden>
+                  Code du cadenas : <strong>4545</strong>
+                </div>
               </div>
+
+              <p class="visitor-note">
+                Ce code est réservé aux visiteurs du Clos de la Voilerie ayant lu et accepté les conditions d’utilisation de la barque.
+              </p>
             </div>
 
-            <p class="visitor-note">
-              Ce code est réservé aux visiteurs du Clos de la Voilerie ayant lu et accepté les conditions d’utilisation de la barque.
-            </p>
+            <figure>
+              <img src="assets/visitor-rowboat-hero.png" alt="Une petite barque bleue sur l’estuaire par beau temps" />
+            </figure>
+          </section>
+        </div>
+
+        <section class="visitor-section visitor-block soft" id="decouvertes">
+          <p class="eyebrow dark">nos recommandations</p>
+          <h2>Balades, activités et bonnes adresses</h2>
+          <p>
+            Voici une sélection de promenades, d’activités et de plaisirs gourmands que nous aimons
+            particulièrement dans la région.
+          </p>
+
+          <div class="visitor-reco-grid">
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">🥾</div>
+                <div>
+                  <h3>Pointe du Raz & thé chez Monsieur Papier</h3>
+                  <p>
+                    Prenez le thé avec un bon gâteau chez <strong>Monsieur Papier</strong> à la Pointe du Raz.
+                    Pour nous, la plus jolie manière de découvrir le site est de randonner depuis la
+                    <strong>Pointe du Vent</strong> (parking des moulins de Trouguer), avec un magnifique panorama
+                    sur la Pointe du Vent, la Pointe du Raz, l’île de Sein et la baie des Trépassés.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">🐠</div>
+                <div>
+                  <h3>L’aquarium d’Audierne</h3>
+                  <p>
+                    Une activité idéale pour les petits comme pour les grands. Le
+                    <strong>spectacle d’oiseaux</strong> est vraiment très sympa.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">🥞</div>
+                <div>
+                  <h3>Le marché d’Audierne</h3>
+                  <p>
+                    Le <strong>mercredi</strong> ou le <strong>samedi matin</strong>, mangez une crêpe beurre-suc’
+                    chez <strong>Fred</strong> (le camion orange), puis achetez des crabes et des huîtres juste en face.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">🚲</div>
+                <div>
+                  <h3>Pont-Croix à pied ou à vélo</h3>
+                  <p>
+                    Une jolie balade, surtout le <strong>mardi soir</strong> pour le marché de producteurs et les concerts.
+                    Départ possible d’Audierne à vélo, avec location à <strong>l’Escapade Nautique</strong>.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">🛶</div>
+                <div>
+                  <h3>Kayak dans l’embouchure du Goyen</h3>
+                  <p>
+                    Une belle manière de découvrir le paysage autrement. Et si vous avez de la chance,
+                    <strong>Randy le dauphin</strong> pourrait bien être de la fête.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">🍸</div>
+                <div>
+                  <h3>Coucher de soleil à La Renverse</h3>
+                  <p>
+                    Allez boire un cocktail à <strong>La Renverse</strong> à Audierne, dégustez un plateau apéritif
+                    et admirez le coucher du soleil.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">⛴️</div>
+                <div>
+                  <h3>Journée sur l’île de Sein</h3>
+                  <p>
+                    Prenez le bateau pour une journée sur cette petite île mystique sans voiture
+                    (<strong>50 minutes de traversée</strong>), idéale pour les enfants et les chiens.
+                    Nous recommandons le <strong>tartare d’huîtres et d’algues chez Brigitte</strong> sur le quai Paimpolais,
+                    puis la montée au phare pour profiter d’une vue complète sur l’île.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">⚓</div>
+                <div>
+                  <h3>Douarnenez & le Port Rhu</h3>
+                  <p>
+                    Promenez-vous autour du <strong>Port Rhu</strong> et visitez le <strong>musée du Port</strong>.
+                    Pour déjeuner, nous aimons les fish & chips de <strong>Pesket</strong> sur les quais,
+                    ou le <strong>Bigorneau Amoureux</strong> pour une cuisine de bistrot délicieuse.
+                  </p>
+                </div>
+              </div>
+            </article>
           </div>
 
-          <figure>
-            <img src="assets/visitor-rowboat-hero.png" alt="Une petite barque bleue sur l’estuaire par beau temps" />
-          </figure>
-        </section>
+          <div class="visitor-reco-note">
+            <strong>Bon réflexe :</strong> n’hésitez pas à passer voir
+            <strong>l’office de tourisme</strong>, situé sur la place du marché, pour davantage d’informations sur les visites.
+          </div>
 
-        </div>
+          <div class="visitor-link-grid">
+            <article class="visitor-link-card">
+              <p class="eyebrow dark">bonnes adresses</p>
+              <h3>Quelques restaurants et haltes à découvrir</h3>
+              <ul class="visitor-link-list">
+                <li>
+                  <a href="https://le-cafe-du-marche-restaurant-audierne.eatbu.com/?lang=fr" target="_blank" rel="noopener">Le Café du Marché</a>
+                  <small>Audierne</small>
+                </li>
+                <li>
+                  <a href="https://alongthedustyroad.com/le-pilleur-d-39-epaves-france" target="_blank" rel="noopener">Le Pilleur d’Épaves</a>
+                  <small>Une adresse de caractère dans la région</small>
+                </li>
+                <li>
+                  <a href="http://www.etrave-roma.fr/fran/accueil.html" target="_blank" rel="noopener">L’Étrave</a>
+                  <small>Restaurant</small>
+                </li>
+                <li>
+                  <span><strong>La buvette de Port Théolen</strong></span>
+                  <small>Pour une pause simple et agréable</small>
+                </li>
+                <li>
+                  <span><strong>Restaurant L’Albatros</strong></span>
+                  <small>Cap Sizun</small>
+                </li>
+                <li>
+                  <span><strong>Le Bar de la Mer</strong></span>
+                  <small>Pour les cocktails</small>
+                </li>
+              </ul>
+            </article>
+
+            <article class="visitor-link-card">
+              <p class="eyebrow dark">encore plus d’idées</p>
+              <h3>Autres lieux où se régaler</h3>
+              <ul class="visitor-link-list">
+                <li>
+                  <span><strong>Restaurant Glazz</strong></span>
+                  <small>Pont-Croix</small>
+                </li>
+                <li>
+                  <span><strong>Restaurant Chez Le Du</strong></span>
+                  <small>Pont-Croix</small>
+                </li>
+                <li>
+                  <a href="https://lecomptoirdeliroise.com/" target="_blank" rel="noopener">Le Comptoir de l’Iroise</a>
+                  <small>Restaurant</small>
+                </li>
+                <li>
+                  <a href="https://orizhon-restaurant.fr/" target="_blank" rel="noopener">Orizhon</a>
+                  <small>Restaurant</small>
+                </li>
+                <li>
+                  <span><strong>Le Goyen</strong></span>
+                  <small>Restaurant</small>
+                </li>
+                <li>
+                  <span><strong>Les crêperies du port d’Audierne</strong></span>
+                  <small>Une valeur sûre pour un repas simple au bord de l’eau</small>
+                </li>
+              </ul>
+            </article>
+          </div>
+        </section>
 
         <section class="visitor-section visitor-block" id="regles">
           <div class="visitor-rule-grid">
             <div>
               <p class="eyebrow dark">règlement intérieur</p>
               <h2>Quelques règles simples pour le confort de tous</h2>
-             <h4> Vous séjournez dans un bâtiment
-historique du port d’Audierne-
-Plouhinec érigé en 1868, cette bâtisse
-abritait la voilerie du port.
-Dans cette résidence se côtoient des
-résidents à l’année, des vacanciers et
-des professionnels en déplacement.
-Pour le confort de chacun, merci de
-respecter ces quelques règles. </h4>
+              <h4>
+                Vous séjournez dans un bâtiment historique du port d’Audierne-Plouhinec érigé en 1868,
+                cette bâtisse abritait la voilerie du port. Dans cette résidence se côtoient des résidents
+                à l’année, des vacanciers et des professionnels en déplacement. Pour le confort de chacun,
+                merci de respecter ces quelques règles.
+              </h4>
               <ul class="visitor-rule-list">
-                
                 <li>Merci de respecter le calme de la résidence, notamment le soir et tôt le matin (entre 22h et 8h).</li>
-                <li>Enlever ses chaussures.</li>              
+                <li>Enlever ses chaussures.</li>
                 <li>Le logement est non-fumeur.</li>
-                <li>Eviter le bruit dans les parties communes</li>
+                <li>Éviter le bruit dans les parties communes.</li>
                 <li>Merci de fermer les fenêtres, éteindre le chauffage et couper les lumières lors de vos absences.</li>
                 <li>En cas de casse ou de problème, prévenez-nous rapidement pour que nous puissions intervenir.</li>
-
               </ul>
-              <h4>Procedure de départ</h4>
 
-                <ul class="visitor-rule-list">
-                  <li>Heure de départ : 10h</li>
-                  <li>Défaire les lits et rassembler le linge utilisé dans la salle de bain</li>
-                  <li>Fermer toutes les fenêtres et couper les chauffages</li>
-                  <li>Vider les poubelles : conteneurs à droite en sortant de l’immeuble</li>
-                  <li>Le ménage de sortie est prévu, mais le logement doit être laissé dans un état raisonnable.</li>
-                  <li>Remettre les clefs dans la boîte à clefs et brouiller le code</li>
-                </ul>
+              <h4>Procédure de départ</h4>
+              <ul class="visitor-rule-list">
+                <li>Heure de départ : 10h.</li>
+                <li>Défaire les lits et rassembler le linge utilisé dans la salle de bain.</li>
+                <li>Fermer toutes les fenêtres et couper les chauffages.</li>
+                <li>Vider les poubelles : conteneurs à droite en sortant de l’immeuble.</li>
+                <li>Le ménage de sortie est prévu, mais le logement doit être laissé dans un état raisonnable.</li>
+                <li>Remettre les clefs dans la boîte à clefs et brouiller le code.</li>
+              </ul>
             </div>
             <figure class="visitor-secondary-image">
               <img src="assets/visitor-rowboat-portrait.png" alt="Moment calme sur l’eau pendant un séjour au Clos de la Voilerie" />
@@ -660,7 +942,8 @@ respecter ces quelques règles. </h4>
               <h2>Revenir en direct</h2>
               <p>
                 Pour un prochain séjour en Bretagne, contactez-nous en direct avant de réserver sur une plateforme.
-                Nous pourrons vous proposer nos meilleures conditions selon les dates disponibles.  Ce code vous donnera accès à une reduction de 5% supplementaire sur votre prochain séjour, pour vous ou pour vos proches.
+                Nous pourrons vous proposer nos meilleures conditions selon les dates disponibles. Ce code vous donnera
+                accès à une réduction de 5% supplémentaire sur votre prochain séjour, pour vous ou pour vos proches.
               </p>
             </div>
             <div class="visitor-offer-code">
@@ -739,14 +1022,16 @@ respecter ces quelques règles. </h4>
       var boatCheckbox = document.getElementById('boat-accept');
       var boatCode = document.getElementById('boat-code');
 
-      boatButton.addEventListener('click', function () {
-        if (!boatCheckbox.checked) {
-          alert('Merci d’accepter les conditions d’utilisation avant d’afficher le code.');
-          return;
-        }
-        boatCode.hidden = false;
-        boatCode.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      });
+      if (boatButton && boatCheckbox && boatCode) {
+        boatButton.addEventListener('click', function () {
+          if (!boatCheckbox.checked) {
+            alert('Merci d’accepter les conditions d’utilisation avant d’afficher le code.');
+            return;
+          }
+          boatCode.hidden = false;
+          boatCode.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      }
     })();
   </script>
 </body>

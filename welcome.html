@@ -1,554 +1,1038 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <script
-  defer
-  src="/js/pageview-tracker.js"
-  data-site="leclosdelavoilerie"
-></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
   <title>Guest guide — Le Clos de la Voilerie</title>
-  <meta name="description" content="Private guest guide for Le Clos de la Voilerie: Wi‑Fi, practical information, house rules and visitor offers.">
+  <meta name="description" content="Private guest guide for Le Clos de la Voilerie: practical information, local recommendations, house rules, offers and access to guest facilities." />
+  <link href="styles.css" rel="stylesheet" />
   <style>
-    :root {
-      --ink: #203137;
-      --muted: #647174;
-      --deep: #12343b;
-      --deep-2: #0d2930;
-      --gold: #c59b58;
-      --gold-soft: #efe2c8;
-      --cream: #f6f1e8;
-      --paper: #fffaf1;
-      --white: #ffffff;
-      --line: rgba(32,49,55,.14);
-      --shadow: 0 22px 70px rgba(18, 52, 59, .16);
-      --radius: 28px;
+    /* Page-specific visitor portal styles */
+    .visitor-hidden { display: none !important; }
+    .visitor-form-status[hidden],
+    .boat-code[hidden],
+    #visitor-content[hidden] { display: none !important; }
+
+    .visitor-header-lite {
+      border-bottom: 1px solid rgba(22, 56, 61, 0.10);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 14% 0%, rgba(197,155,88,.22), transparent 34rem),
-        linear-gradient(180deg, #fbf7ef 0%, var(--cream) 46%, #ffffff 100%);
-      line-height: 1.6;
-    }
-
-    a { color: inherit; }
-    .serif { font-family: Georgia, "Times New Roman", serif; }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: rgba(246,241,232,.86);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 14px 22px;
+    .visitor-gate {
+      min-height: 82vh;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-    .brand {
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--deep);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .navlinks {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-    .navlinks a { text-decoration: none; }
-    .navlinks a:hover { color: var(--deep); }
-    .lang {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 6px 10px;
-      color: var(--deep);
-      font-weight: 700;
-      background: rgba(255,255,255,.5);
+      background: #f7f2ea;
     }
 
-    .hero {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 70px 22px 38px;
+    .visitor-gate-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .72fr);
-      gap: 34px;
-      align-items: stretch;
+      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.85fr);
+      gap: clamp(30px, 6vw, 82px);
+      align-items: center;
     }
-    .hero-copy {
-      min-height: 520px;
-      border-radius: var(--radius);
-      padding: clamp(32px, 5vw, 58px);
-      background:
-        linear-gradient(135deg, rgba(18,52,59,.94), rgba(18,52,59,.78)),
-        url("/images/voilerie-estuaire.jpg") center/cover;
-      color: var(--white);
-      box-shadow: var(--shadow);
-      overflow: hidden;
+
+    .visitor-gate-copy h1 {
+      margin-bottom: 20px;
+    }
+
+    .visitor-gate-copy > p {
+      max-width: 62ch;
+    }
+
+    .visitor-gate-boat {
+      margin: 0;
       position: relative;
-    }
-    .hero-copy::after {
-      content: "";
-      position: absolute;
-      right: -90px;
-      bottom: -120px;
-      width: 310px;
-      height: 310px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.18);
-    }
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: .22em;
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--gold-soft);
-      margin: 0 0 16px;
-    }
-    h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(44px, 7vw, 78px);
-      line-height: .96;
-      letter-spacing: -.045em;
-      margin: 0 0 22px;
-      max-width: 760px;
-      font-weight: 400;
-    }
-    .hero-copy p {
-      max-width: 620px;
-      margin: 0;
-      color: rgba(255,255,255,.88);
-      font-size: 18px;
-    }
-    .hero-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 34px;
-    }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(255,255,255,.24);
-      background: rgba(255,255,255,.1);
-      color: rgba(255,255,255,.9);
-      border-radius: 999px;
-      padding: 9px 13px;
-      font-size: 14px;
+      border-radius: 32px;
+      overflow: hidden;
+      background: #fffdf8;
+      box-shadow: 0 24px 70px rgba(22, 56, 61, 0.16);
     }
 
-    .card {
-      background: rgba(255,255,255,.86);
-      border: 1px solid rgba(255,255,255,.76);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .access-card { padding: 28px; }
-    .access-card h2 {
-      margin: 0 0 8px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 32px;
-      line-height: 1.1;
-      font-weight: 400;
-      color: var(--deep);
-    }
-    .access-card p { color: var(--muted); margin: 0 0 22px; }
-    label {
+    .visitor-gate-boat img {
       display: block;
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--deep);
-      margin: 15px 0 7px;
-    }
-    input, select {
       width: 100%;
-      border: 1px solid rgba(32,49,55,.18);
-      border-radius: 14px;
-      padding: 13px 14px;
-      font: inherit;
-      color: var(--ink);
-      background: #fff;
-      outline: none;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
     }
-    input:focus, select:focus { border-color: rgba(197,155,88,.85); box-shadow: 0 0 0 4px rgba(197,155,88,.16); }
-    .checks { margin: 16px 0 18px; display: grid; gap: 10px; }
-    .check {
+
+    .visitor-gate-boat figcaption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255, 253, 248, 0.88);
+      color: #16383d;
+      font-weight: 800;
+      box-shadow: 0 12px 32px rgba(22, 56, 61, 0.16);
+      backdrop-filter: blur(10px);
+    }
+
+    .visitor-form {
+      margin-top: 28px;
       display: grid;
-      grid-template-columns: 20px 1fr;
-      gap: 10px;
-      align-items: start;
-      color: var(--muted);
-      font-size: 13px;
+      gap: 16px;
+      max-width: 720px;
+    }
+
+    .visitor-form label {
+      display: grid;
+      gap: 8px;
+      font-weight: 700;
+      color: #16383d;
+    }
+
+    .visitor-form input,
+    .visitor-form select {
+      width: 100%;
+      min-height: 52px;
+      border: 1px solid rgba(22, 56, 61, 0.16);
+      border-radius: 14px;
+      padding: 0 16px;
+      background: #fffdf8;
+      color: #16383d;
+      font: inherit;
+    }
+
+    .checkbox-line {
+      display: flex !important;
+      grid-template-columns: none !important;
+      align-items: flex-start;
+      gap: 12px !important;
+      font-weight: 500 !important;
       line-height: 1.45;
     }
-    .check input { width: 18px; margin-top: 1px; }
-    .btn {
-      border: 0;
-      border-radius: 999px;
-      padding: 14px 22px;
-      background: var(--gold);
-      color: #fff;
-      font-weight: 900;
-      font-size: 15px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      width: 100%;
-      transition: transform .16s ease, box-shadow .16s ease;
-      box-shadow: 0 10px 24px rgba(197,155,88,.28);
-    }
-    .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 30px rgba(197,155,88,.32); }
-    .fineprint { font-size: 12px; color: var(--muted); margin-top: 14px !important; }
 
-    main { max-width: 1120px; margin: 0 auto; padding: 8px 22px 70px; }
-    .guide-intro {
-      display: grid;
-      grid-template-columns: .82fr 1.18fr;
-      gap: 22px;
-      margin: 18px 0 26px;
-      align-items: stretch;
+    .checkbox-line input {
+      width: 20px !important;
+      min-width: 20px !important;
+      height: 20px !important;
+      min-height: 20px !important;
+      margin-top: 2px;
+      padding: 0 !important;
     }
-    .mini-card {
-      padding: 26px;
-      border-radius: 24px;
-      background: var(--paper);
-      border: 1px solid var(--line);
-    }
-    .mini-card h2, section h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(32px, 5vw, 52px);
-      line-height: 1.02;
-      margin: 0 0 12px;
-      font-weight: 400;
-      color: var(--deep);
-      letter-spacing: -.035em;
-    }
-    .mini-card p { margin: 0; color: var(--muted); }
-    .quicklinks {
-      padding: 26px;
-      border-radius: 24px;
-      background: #fff;
-      border: 1px solid var(--line);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .quicklink {
-      text-decoration: none;
-      padding: 18px;
-      border-radius: 18px;
-      background: #f8f4ec;
-      border: 1px solid transparent;
-      min-height: 112px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .quicklink strong { display: block; color: var(--deep); font-size: 16px; }
-    .quicklink span { color: var(--muted); font-size: 13px; }
-    .quicklink:hover { border-color: rgba(197,155,88,.5); }
 
-    section {
-      scroll-margin-top: 90px;
-      margin: 28px 0;
-      padding: clamp(26px, 4vw, 42px);
-      border-radius: var(--radius);
-      background: #fff;
-      border: 1px solid var(--line);
-      box-shadow: 0 16px 44px rgba(18,52,59,.07);
-    }
-    .section-grid {
-      display: grid;
-      grid-template-columns: 330px 1fr;
-      gap: 32px;
-      align-items: start;
-    }
-    .section-label {
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      font-size: 12px;
-      font-weight: 900;
-      color: var(--gold);
-      margin: 0 0 12px;
-    }
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .info-box {
-      background: #f8f4ec;
-      border-radius: 20px;
-      padding: 20px;
-      border: 1px solid rgba(32,49,55,.08);
-    }
-    .info-box h3 { margin: 0 0 8px; font-size: 18px; color: var(--deep); }
-    .info-box p { margin: 0; color: var(--muted); }
-    .wifi {
-      background: linear-gradient(135deg, #12343b, #1b4d57);
-      color: #fff;
-    }
-    .wifi h3, .wifi p { color: #fff; }
-    .wifi code {
-      display: inline-block;
-      margin-top: 8px;
-      background: rgba(255,255,255,.14);
-      padding: 6px 9px;
-      border-radius: 10px;
-      font-size: 15px;
-    }
-    ul.rules {
-      margin: 0;
-      padding-left: 20px;
-      color: var(--muted);
-    }
-    ul.rules li { margin: 0 0 10px; }
-    .notice {
-      margin-top: 22px;
-      padding: 20px;
-      border-radius: 20px;
-      background: var(--paper);
-      border: 1px solid rgba(197,155,88,.26);
-    }
-    .notice h3 { margin: 0 0 8px; color: var(--deep); }
-    .notice p { margin: 0; color: var(--muted); }
-    .offer-code {
-      display: inline-block;
-      margin-top: 16px;
-      padding: 12px 16px;
+    .visitor-form-status {
+      margin: 16px 0;
+      padding: 14px 16px;
       border-radius: 14px;
-      border: 1px dashed rgba(18,52,59,.35);
-      background: #fff;
-      color: var(--deep);
-      font-weight: 900;
-      letter-spacing: .06em;
-    }
-    footer {
-      padding: 30px 22px 46px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .hidden-guide { display: none; }
-    .hidden-guide.is-visible { display: block; }
-    .success {
-      display: none;
-      margin: 14px 0 0;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(21,128,61,.09);
-      color: #166534;
-      font-size: 13px;
+      background: rgba(20, 140, 154, 0.10);
+      color: #16383d;
       font-weight: 700;
     }
-    .success.is-visible { display: block; }
+
+    .visitor-form-status.is-error {
+      background: rgba(169, 68, 66, 0.12);
+      color: #a94442;
+    }
+
+    .visitor-note {
+      margin-top: 18px;
+      font-size: 0.92rem;
+      opacity: 0.78;
+    }
+
+    .visitor-gate.is-complete {
+      min-height: auto;
+      padding: 46px 0;
+    }
+
+    .visitor-gate.is-complete .visitor-form,
+    .visitor-gate.is-complete .visitor-gate-boat,
+    .visitor-gate.is-complete .visitor-note,
+    .visitor-gate.is-complete .visitor-gate-copy > p,
+    .visitor-gate.is-complete h1 {
+      display: none;
+    }
+
+    .visitor-content-intro {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 36px;
+    }
+
+    .visitor-quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .visitor-quick-links a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .visitor-section { scroll-margin-top: 90px; }
+
+    .visitor-block {
+      padding: clamp(34px, 5vw, 64px);
+      border-radius: 34px;
+      background: #fffdf8;
+      border: 1px solid rgba(22, 56, 61, 0.10);
+      box-shadow: 0 18px 50px rgba(22, 56, 61, 0.07);
+      margin-top: 28px;
+    }
+
+    .visitor-block.soft {
+      background: #f7f2ea;
+    }
+
+    .visitor-boat-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: clamp(28px, 5vw, 64px);
+      align-items: center;
+      background: #16383d;
+      color: #fffdf8;
+      border: 0;
+      overflow: hidden;
+    }
+
+    .visitor-boat-feature .eyebrow,
+    .visitor-boat-feature h2,
+    .visitor-boat-feature strong {
+      color: #fffdf8;
+    }
+
+    .visitor-boat-feature p,
+    .visitor-boat-feature li {
+      color: rgba(255, 253, 248, 0.88);
+    }
+
+    .visitor-boat-feature figure {
+      margin: 0;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+    }
+
+    .visitor-boat-feature img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .visitor-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .visitor-card-grid article,
+    .visitor-mini-card {
+      padding: 24px;
+      border-radius: 22px;
+      background: #fffdf8;
+      border: 1px solid rgba(22, 56, 61, 0.12);
+      box-shadow: 0 18px 44px rgba(22, 56, 61, 0.08);
+    }
+
+    .visitor-rule-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.75fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .visitor-rule-list,
+    .boat-rule-list {
+      margin: 18px 0 0;
+      padding-left: 1.2rem;
+      line-height: 1.65;
+    }
+
+    .boat-rule-list {
+      margin-bottom: 22px;
+    }
+
+    .boat-access-panel {
+      margin-top: 28px;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255, 253, 248, 0.09);
+      border: 1px solid rgba(255, 253, 248, 0.18);
+    }
+
+    .boat-access-panel .checkbox-line {
+      color: #fffdf8;
+    }
+
+    .boat-code {
+      margin-top: 20px;
+      padding: 22px;
+      border-radius: 18px;
+      background: #fffdf8;
+      color: #16383d;
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    .boat-code strong {
+      color: #16383d;
+      letter-spacing: 0.18em;
+    }
+
+    .visitor-offer-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .visitor-offer-code {
+      padding: 24px;
+      border-radius: 24px;
+      background: #16383d;
+      color: #fffdf8;
+      text-align: center;
+      font-weight: 800;
+      box-shadow: 0 18px 44px rgba(22, 56, 61, 0.12);
+    }
+
+    .visitor-offer-code span {
+      display: block;
+      margin-top: 10px;
+      font-size: 1.35rem;
+      letter-spacing: 0.08em;
+    }
+
+    .visitor-secondary-image {
+      margin: 0;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 44px rgba(22, 56, 61, 0.10);
+    }
+
+    .visitor-secondary-image img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    /* Final polish: essentials left, signature boat panel right */
+    .visitor-quick-links .button-dark {
+      background: #16383d !important;
+      color: #fffdf8 !important;
+      border-color: #16383d !important;
+    }
+
+    .visitor-overview-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.82fr) minmax(420px, 1.18fr);
+      gap: clamp(22px, 3vw, 34px);
+      align-items: start;
+      margin-top: 28px;
+    }
+
+    .visitor-overview-grid .visitor-block {
+      margin-top: 0;
+      height: auto;
+    }
+
+    .visitor-overview-grid .visitor-boat-feature {
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: 26px;
+      padding: clamp(32px, 4vw, 52px);
+    }
+
+    .visitor-overview-grid .visitor-boat-feature figure {
+      order: -1;
+    }
+
+    .visitor-overview-grid .visitor-boat-feature img {
+      aspect-ratio: 16 / 9;
+    }
+
+    .visitor-overview-grid #infos .visitor-card-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .visitor-overview-grid #infos h2,
+    .visitor-overview-grid #barque h2 {
+      font-size: clamp(2rem, 3.2vw, 3.45rem);
+    }
+
+    .visitor-overview-grid #infos {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    /* Recommendations / local tips */
+    .visitor-reco-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .visitor-reco-card,
+    .visitor-link-card {
+      padding: 24px;
+      border-radius: 24px;
+      background: #fffdf8;
+      border: 1px solid rgba(22, 56, 61, 0.12);
+      box-shadow: 0 18px 44px rgba(22, 56, 61, 0.08);
+    }
+
+    .visitor-reco-head {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .visitor-reco-icon {
+      width: 54px;
+      height: 54px;
+      min-width: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: #fffdf8;
+      font-size: 1.45rem;
+      box-shadow: inset 0 0 0 1px rgba(22, 56, 61, 0.08);
+    }
+
+    .visitor-reco-card h3,
+    .visitor-link-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .visitor-reco-card p,
+    .visitor-link-card p {
+      margin: 0;
+    }
+
+    .visitor-reco-note {
+      margin-top: 24px;
+      padding: 20px 22px;
+      border-radius: 22px;
+      background: rgba(20, 140, 154, 0.08);
+      border: 1px solid rgba(20, 140, 154, 0.14);
+    }
+
+    .visitor-link-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .visitor-link-list {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .visitor-link-list li {
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(22, 56, 61, 0.08);
+    }
+
+    .visitor-link-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .visitor-link-list a {
+      color: #16383d;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .visitor-link-list a:hover {
+      text-decoration: underline;
+    }
+
+    .visitor-link-list small {
+      display: block;
+      margin-top: 4px;
+      opacity: 0.78;
+      line-height: 1.45;
+    }
+
+    /* Temporary mode: hide the boat until it is available */
+    body.no-boat .visitor-gate-boat,
+    body.no-boat #barque,
+    body.no-boat a[href="#barque"],
+    body.no-boat .visitor-secondary-image {
+      display: none !important;
+    }
+
+    body.no-boat .visitor-gate-grid,
+    body.no-boat .visitor-overview-grid,
+    body.no-boat .visitor-rule-grid {
+      grid-template-columns: 1fr;
+    }
+
+    body.no-boat .visitor-overview-grid {
+      max-width: 980px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    body.no-boat .visitor-overview-grid #infos .visitor-card-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding-top: 42px; }
-      .hero-copy { min-height: auto; }
-      .guide-intro, .section-grid { grid-template-columns: 1fr; }
-      .quicklinks, .info-grid { grid-template-columns: 1fr; }
-      .nav { align-items: flex-start; }
-      .navlinks { flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+      .visitor-gate-grid,
+      .visitor-overview-grid,
+      .visitor-boat-feature,
+      .visitor-rule-grid,
+      .visitor-offer-grid,
+      .visitor-reco-grid,
+      .visitor-link-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .visitor-gate-boat { order: -1; }
     }
-    @media (max-width: 560px) {
-      .nav { padding: 12px 14px; }
-      .hero, main { padding-left: 14px; padding-right: 14px; }
-      .hero-copy, .access-card, section { border-radius: 22px; }
-      .navlinks a:not(.lang) { display: none; }
-      h1 { font-size: 46px; }
+
+    @media (max-width: 760px) {
+      .visitor-quick-links,
+      .visitor-card-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .visitor-block {
+        padding: 26px 20px;
+        border-radius: 24px;
+      }
+
+      .visitor-gate {
+        min-height: auto;
+        padding: 34px 0;
+      }
+
+      .visitor-gate-boat img {
+        aspect-ratio: 16 / 11;
+      }
+
+      .visitor-reco-head {
+        gap: 12px;
+      }
+
+      .visitor-reco-icon {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+        border-radius: 16px;
+      }
+
+      body.no-boat .visitor-overview-grid #infos .visitor-card-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
-<body>
-  <header class="topbar">
-    <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="/">Le Clos de la Voilerie</a>
-      <div class="navlinks">
-        <a href="/">Back to website</a>
-        <a href="#practical">Practical info</a>
-        <a href="#rules">House rules</a>
-        <a href="#offers">Offers</a>
-        <a class="lang" href="/bienvenue" hreflang="fr">FR</a>
-      </div>
+<body class="apartment-page visitor-page no-boat">
+  <header aria-label="Guest navigation" class="site-header page-site-header visitor-header-lite">
+    <a aria-label="Le Clos de la Voilerie" class="brand" href="index.html">
+      <img alt="" src="assets/logo-voilerie.png" />
+      <span>le clos de la voilerie</span>
+    </a>
+    <nav>
+      <a href="index.html">Back to website</a>
+      <a href="#decouvertes">Discoveries</a>
+      <a href="#infos">Practical info</a>
+      <a href="#regles">Rules</a>
+      <a class="nav-cta" href="#offres">Offers</a>
     </nav>
+    <div aria-label="Language choice" class="mobile-lang-switch lang-switch">
+      <a aria-current="true" href="bienvenue.html" hreflang="fr" lang="fr">FR</a>
+    </div>
   </header>
 
-  <section class="hero" aria-labelledby="page-title">
-    <div class="hero-copy">
-      <p class="eyebrow">Guest guide</p>
-      <h1 id="page-title">Your stay starts here.</h1>
-      <p>Access the private guide for Le Clos de la Voilerie: practical information, Wi‑Fi, house rules and visitor offers to help you prepare for your stay.</p>
-      <div class="hero-pills" aria-label="Guide contents">
-        <span class="pill">Wi‑Fi code</span>
-        <span class="pill">Arrival & departure</span>
-        <span class="pill">Local suggestions</span>
-        <span class="pill">House rules</span>
-      </div>
-    </div>
+  <main id="top">
+    <section class="visitor-gate" id="visitor-access">
+      <div class="container visitor-gate-grid">
+        <div class="visitor-gate-copy">
+          <p class="eyebrow dark">guest guide</p>
+          <h1>Your stay starts here.</h1>
+          <p>
+            Access the private guide for Le Clos de la Voilerie: practical information, house rules
+            and local ideas to help you prepare for your stay.
+          </p>
 
-    <aside class="card access-card" aria-label="Access form">
-      <h2>Access your guide</h2>
-      <p>Please enter a few details so we can open the visitor guide for your stay.</p>
+          <div id="visitor-form-status" class="visitor-form-status" role="status" hidden></div>
 
-      <!-- If you use Formspree or another form tool, replace action="#" with your real endpoint. -->
           <form id="visitor-form" class="visitor-form" action="https://formspree.io/f/xdavzneb" method="POST">
-        <label for="guestName">Name</label>
-        <input id="guestName" name="name" type="text" autocomplete="name" required>
+            <label for="visitor-name">
+              Name
+              <input id="visitor-name" type="text" name="name" autocomplete="name" required />
+            </label>
 
-        <label for="guestEmail">Email</label>
-        <input id="guestEmail" name="email" type="email" autocomplete="email" required>
+            <label for="visitor-email">
+              Email
+              <input id="visitor-email" type="email" name="email" autocomplete="email" required />
+            </label>
 
-        <label for="apartment">Apartment</label>
-        <select id="apartment" name="apartment" required>
-          <option value="">Choose your apartment</option>
-          <option>Apt 2 — A garden overlooking the port</option>
-          <option>Apt 4 — A balcony over the sea</option>
-          <option>Apt 5 — A hideaway under the rooftops</option>
-        </select>
+            <label for="visitor-apartment">
+              Apartment
+              <select id="visitor-apartment" name="apartment" required>
+                <option value="Apt 2 - A garden overlooking the harbour">Apt 2 - A garden overlooking the harbour</option>
+                <option value="Apt 4 - A balcony over the sea">Apt 4 - A balcony over the sea</option>
+                <option value="Apt 5 - A hideaway under the rooftops">Apt 5 - A hideaway under the rooftops</option>
+              </select>
+            </label>
 
-        <label for="bookingRef">Booking reference, if you have it</label>
-        <input id="bookingRef" name="booking_reference" type="text" autocomplete="off">
+            <label for="visitor-booking-ref">
+              Booking reference, if you have it
+              <input id="visitor-booking-ref" type="text" name="booking_reference" autocomplete="off" />
+            </label>
 
-        <div class="checks">
-          <label class="check">
-            <input type="checkbox" name="stay_info_consent" required>
-            <span>I agree that this information may be used to send me useful information related to my stay.</span>
-          </label>
-          <label class="check">
-            <input type="checkbox" name="marketing_consent">
-            <span>I agree to occasionally receive offers and information from Le Clos de la Voilerie.</span>
-          </label>
+            <label class="checkbox-line" for="stay-info-consent">
+              <input id="stay-info-consent" type="checkbox" name="stay_info_consent" value="yes" required />
+              <span>I agree that this information may be used to send me useful information related to my stay.</span>
+            </label>
+
+            <label class="checkbox-line" for="marketing-consent">
+              <input id="marketing-consent" type="checkbox" name="marketing_consent" value="yes" />
+              <span>I agree to occasionally receive offers and information from Le Clos de la Voilerie.</span>
+            </label>
+
+            <input type="hidden" name="source" value="visitor-page" />
+            <input type="hidden" name="site" value="Le Clos de la Voilerie" />
+            <input type="hidden" name="_subject" value="New guest guide access — Le Clos de la Voilerie" />
+
+            <button type="submit" class="button button-dark" id="visitor-submit-button">
+              Access the guest guide
+            </button>
+          </form>
+
+          <p class="visitor-note">
+            Your information will not be published. Future offers will only be sent if you tick the corresponding option.
+          </p>
         </div>
 
-        <button class="btn" type="submit">Access the guest guide</button>
-        <p class="fineprint">Your information will not be published. Future offers will only be sent if you tick the corresponding option.</p>
-        <p id="formSuccess" class="success">Thank you — the guide is now available below.</p>
-      </form>
-    </aside>
-  </section>
-
-  <main id="guide" class="hidden-guide">
-    <div class="guide-intro">
-      <div class="mini-card">
-        <p class="section-label">Useful information</p>
-        <h2>Your stay guide</h2>
-        <p>Keep this page handy during your stay. It is not accessible from the website menus.</p>
-      </div>
-      <div class="quicklinks" aria-label="Quick links">
-        <a class="quicklink" href="#practical"><strong>Practical information</strong><span>Contact, check‑in, Wi‑Fi</span></a>
-        <a class="quicklink" href="#rules"><strong>House rules</strong><span>A few simple rules for everyone’s comfort</span></a>
-        <a class="quicklink" href="#offers"><strong>Visitor offers</strong><span>Come back by booking direct</span></a>
-      </div>
-    </div>
-
-    <section id="practical">
-      <div class="section-grid">
-        <div>
-          <p class="section-label">Practical information</p>
-          <h2>The essentials for your stay</h2>
-        </div>
-        <div class="info-grid">
-          <article class="info-box">
-            <h3>Contact</h3>
-            <p>If needed:<br><strong>06 33 83 55 25</strong></p>
-          </article>
-          <article class="info-box">
-            <h3>Arrival & departure</h3>
-            <p>Arrival from <strong>4:00 pm</strong>.<br>Departure before <strong>10:00 am</strong>, unless agreed in advance.</p>
-          </article>
-          <article class="info-box wifi">
-            <h3>Wi‑Fi</h3>
-            <p>Network: <strong>Le Clos de la Voilerie</strong><br>Password:<br><code>Magellan</code></p>
-          </article>
-        </div>
+        <figure class="visitor-gate-boat">
+          <img src="assets/visitor-rowboat-portrait.png" alt="A family enjoying a small blue rowing boat on calm water" />
+          <figcaption>The Clos rowing boat: a small extra adventure during your stay.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <section id="rules">
-      <div class="section-grid">
-        <div>
-          <p class="section-label">House rules</p>
-          <h2>A few simple rules for everyone’s comfort</h2>
-        </div>
-        <div>
-          <p>You are staying in a historic building on the Audierne‑Plouhinec harbour. Built in 1868, this building once housed the port’s sail‑making workshop. Today, the residence is shared by year‑round residents, holidaymakers and people travelling for work. For everyone’s comfort, thank you for respecting these few rules.</p>
-          <ul class="rules">
-            <li>Please respect the calm of the residence, especially in the evening and early morning, between 10:00 pm and 8:00 am.</li>
-            <li>Please take off your shoes inside the apartment.</li>
-            <li>The accommodation is non‑smoking.</li>
-            <li>Please avoid noise in the shared areas.</li>
-            <li>Please close the windows, turn off the heating and switch off the lights when you are away.</li>
-            <li>If anything is broken or if there is a problem, please let us know quickly so that we can help.</li>
-          </ul>
+    <section id="visitor-content" class="visitor-content section-pad" hidden>
+      <div class="container">
+        <div class="visitor-content-intro">
+          <p class="eyebrow dark">useful information</p>
+          <h2>Your stay guide</h2>
+          <p>
+            Keep this page handy during your stay. It is not accessible from the website menus.
+          </p>
 
-          <div class="notice">
-            <h3>Departure procedure</h3>
-            <ul class="rules">
-              <li>Departure time: 10:00 am.</li>
-              <li>Strip the beds and gather the used linen in the bathroom.</li>
-              <li>Close all windows and turn off the heating.</li>
-              <li>Empty the bins: the containers are on the right as you leave the building.</li>
-              <li>End‑of‑stay cleaning is included, but the apartment must be left in a reasonable condition.</li>
-              <li>Put the keys back in the key box and scramble the code.</li>
-            </ul>
+          <div class="visitor-quick-links">
+            <a class="button button-dark" href="#decouvertes">Discoveries</a>
+            <a class="button button-outline" href="#infos">Practical info</a>
+            <a class="button button-outline" href="#regles">House rules</a>
+            <a class="button button-outline" href="#offres">Offers</a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section id="offers">
-      <div class="section-grid">
-        <div>
-          <p class="section-label">Visitor offers</p>
-          <h2>Come back by booking direct</h2>
+        <div class="visitor-overview-grid">
+          <section class="visitor-section visitor-block soft" id="infos">
+            <p class="eyebrow dark">infos pratiques</p>
+            <h2>The essentials for your stay</h2>
+            <div class="visitor-card-grid">
+              <article>
+                <h3>Contact</h3>
+                <p>If needed:<br /><strong>06 33 83 55 25</strong></p>
+              </article>
+              <article>
+                <h3>Arrival and departure</h3>
+                <p>Arrival from 4:00 pm. Departure before 10:00 am, unless agreed in advance.</p>
+              </article>
+              <article>
+                <h3>Wi‑Fi</h3>
+                <p>Network: <strong>Le Clos de la Voilerie</strong><br />Password: <strong>Magellan</strong></p>
+              </article>
+            </div>
+          </section>
+
+          <section class="visitor-section visitor-block visitor-boat-feature" id="barque">
+            <div>
+              <p class="eyebrow light">signature experience</p>
+              <h2>A small rowing boat to experience the Goyen differently.</h2>
+              <p>
+                The rowing boat is made available free of charge for guests of Le Clos de la Voilerie,
+                only when weather and tide conditions allow.
+              </p>
+              <p>
+                To obtain the padlock code, please read the usage rules. They are simple,
+                but important: the estuary is a real marine environment.
+              </p>
+
+              <ul class="boat-rule-list">
+                <li>Use only in calm weather and during daylight.</li>
+                <li>Life jackets are compulsory for all occupants.</li>
+                <li>Children must always be accompanied by an adult.</li>
+                <li>Do not use the rowing boat after consuming alcohol.</li>
+                <li>Check the weather, tide and current before every outing.</li>
+                <li>The rowing boat must be returned to its place, tied up and locked after use.</li>
+              </ul>
+
+              <div class="boat-access-panel">
+                <label class="checkbox-line" for="boat-accept">
+                  <input type="checkbox" id="boat-accept" />
+                  <span>I have read and accept the conditions of use for the rowing boat.</span>
+                </label>
+
+                <button type="button" class="button button-light" id="show-boat-code">
+                  Show the code
+                </button>
+
+                <div class="boat-code" id="boat-code" hidden>
+                  Padlock code: <strong>4545</strong>
+                </div>
+              </div>
+
+              <p class="visitor-note">
+                This code is reserved for guests of Le Clos de la Voilerie who have read and accepted the rowing boat conditions of use.
+              </p>
+            </div>
+
+            <figure>
+              <img src="assets/visitor-rowboat-hero.png" alt="A small blue rowing boat on the estuary in fine weather" />
+            </figure>
+          </section>
         </div>
-        <div>
-          <p>For a future stay in Brittany, contact us directly before booking through a platform. Depending on the available dates, we will be able to offer you our best conditions. This code gives you access to an additional 5% discount on your next stay, for you or for your friends and family.</p>
-          <span class="offer-code">VOILERIE-DIRECT5</span>
-        </div>
+
+        <section class="visitor-section visitor-block soft" id="decouvertes">
+          <p class="eyebrow dark">our recommendations</p>
+          <h2>Walks, activities and favourite addresses</h2>
+          <p>
+            Here is a selection of walks, activities and food stops that we particularly enjoy
+            in the area.
+          </p>
+
+          <div class="visitor-reco-grid">
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">🥾</div>
+                <div>
+                  <h3>Pointe du Raz & tea at Monsieur Papier</h3>
+                  <p>
+                    Have tea with a good cake at <strong>Monsieur Papier</strong> at the Pointe du Raz.
+                    For us, the most beautiful way to discover the site is to hike from the
+                    <strong>Pointe du Vent</strong> (Trouguer windmill car park), with a magnificent panorama
+                    over the Pointe du Vent, the Pointe du Raz, the Île de Sein and the Baie des Trépassés.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">🐠</div>
+                <div>
+                  <h3>The Audierne aquarium</h3>
+                  <p>
+                    An ideal activity for children and adults alike. The
+                    <strong>bird show</strong> is really lovely.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">🥞</div>
+                <div>
+                  <h3>Audierne market</h3>
+                  <p>
+                    On <strong>Wednesday</strong> or <strong>Saturday morning</strong>, have a butter-and-sugar crêpe
+                    at <strong>Fred’s</strong> (the orange food truck), then buy crabs and oysters just opposite.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">🚲</div>
+                <div>
+                  <h3>Pont-Croix on foot or by bike</h3>
+                  <p>
+                    A lovely outing, especially on <strong>Tuesday evening</strong> for the producers’ market and concerts.
+                    You can set off from Audierne by bike, with rentals available at <strong>l’Escapade Nautique</strong>.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">🛶</div>
+                <div>
+                  <h3>Kayaking in the mouth of the Goyen</h3>
+                  <p>
+                    A beautiful way to discover the landscape from a different angle. If you are lucky,
+                    <strong>Randy the dolphin</strong> might even make an appearance.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">🍸</div>
+                <div>
+                  <h3>Sunset at La Renverse</h3>
+                  <p>
+                    Go for a cocktail at <strong>La Renverse</strong> in Audierne, enjoy an aperitif platter
+                    and watch the sunset.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">⛴️</div>
+                <div>
+                  <h3>A day on the Île de Sein</h3>
+                  <p>
+                    Take the boat for a day on this small, mystical, car-free island
+                    (<strong>50-minute crossing</strong>), ideal for children and dogs.
+                    We recommend the <strong>oyster and seaweed tartare at Brigitte’s</strong> on the Quai Paimpolais,
+                    then climbing up to the lighthouse for a full view of the island.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <article class="visitor-reco-card">
+              <div class="visitor-reco-head">
+                <div class="visitor-reco-icon" aria-hidden="true">⚓</div>
+                <div>
+                  <h3>Douarnenez & the Port Rhu</h3>
+                  <p>
+                    Walk around the <strong>Port Rhu</strong> and visit the <strong>Port Museum</strong>.
+                    For lunch, we like the fish and chips at <strong>Pesket</strong> on the quays,
+                    or <strong>Bigorneau Amoureux</strong> for delicious bistro cooking.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="visitor-reco-note">
+            <strong>Good idea:</strong> do not hesitate to stop by the
+            <strong>tourist office</strong>, located on the market square, for more information about visits.
+          </div>
+
+          <div class="visitor-link-grid">
+            <article class="visitor-link-card">
+              <p class="eyebrow dark">favourite addresses</p>
+              <h3>A few restaurants and stops to discover</h3>
+              <ul class="visitor-link-list">
+                <li>
+                  <a href="https://le-cafe-du-marche-restaurant-audierne.eatbu.com/?lang=fr" target="_blank" rel="noopener">Le Café du Marché</a>
+                  <small>Audierne</small>
+                </li>
+                <li>
+                  <a href="https://alongthedustyroad.com/le-pilleur-d-39-epaves-france" target="_blank" rel="noopener">Le Pilleur d’Épaves</a>
+                  <small>A characterful address in the area</small>
+                </li>
+                <li>
+                  <a href="http://www.etrave-roma.fr/fran/accueil.html" target="_blank" rel="noopener">L’Étrave</a>
+                  <small>Restaurant</small>
+                </li>
+                <li>
+                  <span><strong>La buvette de Port Théolen</strong></span>
+                  <small>For a simple and pleasant break</small>
+                </li>
+                <li>
+                  <span><strong>Restaurant L’Albatros</strong></span>
+                  <small>Cap Sizun</small>
+                </li>
+                <li>
+                  <span><strong>Le Bar de la Mer</strong></span>
+                  <small>For cocktails</small>
+                </li>
+              </ul>
+            </article>
+
+            <article class="visitor-link-card">
+              <p class="eyebrow dark">more ideas</p>
+              <h3>More places to eat well</h3>
+              <ul class="visitor-link-list">
+                <li>
+                  <span><strong>Restaurant Glazz</strong></span>
+                  <small>Pont-Croix</small>
+                </li>
+                <li>
+                  <span><strong>Restaurant Chez Le Du</strong></span>
+                  <small>Pont-Croix</small>
+                </li>
+                <li>
+                  <a href="https://lecomptoirdeliroise.com/" target="_blank" rel="noopener">Le Comptoir de l’Iroise</a>
+                  <small>Restaurant</small>
+                </li>
+                <li>
+                  <a href="https://orizhon-restaurant.fr/" target="_blank" rel="noopener">Orizhon</a>
+                  <small>Restaurant</small>
+                </li>
+                <li>
+                  <span><strong>Le Goyen</strong></span>
+                  <small>Restaurant</small>
+                </li>
+                <li>
+                  <span><strong>Les crêperies du port d’Audierne</strong></span>
+                  <small>A safe choice for a simple meal by the water</small>
+                </li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="visitor-section visitor-block" id="regles">
+          <div class="visitor-rule-grid">
+            <div>
+              <p class="eyebrow dark">règlement intérieur</p>
+              <h2>A few simple rules for everyone’s comfort</h2>
+              <h4>
+                You are staying in a historic building on the Audierne-Plouhinec harbour, built in 1868.
+                This building once housed the port’s sail-making workshop. Today, the residence is shared by
+                year-round residents, holidaymakers and people travelling for work. For everyone’s comfort,
+                thank you for respecting these few rules.
+              </h4>
+              <ul class="visitor-rule-list">
+                <li>Please respect the calm of the residence, especially in the evening and early morning, between 10:00 pm and 8:00 am.</li>
+                <li>Please take off your shoes inside the apartment.</li>
+                <li>The accommodation is non-smoking.</li>
+                <li>Please avoid noise in the shared areas.</li>
+                <li>Please close the windows, turn off the heating and switch off the lights when you are away.</li>
+                <li>If anything is broken or if there is a problem, please let us know quickly so that we can help.</li>
+              </ul>
+
+              <h4>Departure procedure</h4>
+              <ul class="visitor-rule-list">
+                <li>Departure time: 10:00 am.</li>
+                <li>Strip the beds and gather the used linen in the bathroom.</li>
+                <li>Close all windows and turn off the heating.</li>
+                <li>Empty the bins: the containers are on the right as you leave the building.</li>
+                <li>End-of-stay cleaning is included, but the apartment must be left in a reasonable condition.</li>
+                <li>Put the keys back in the key box and scramble the code.</li>
+              </ul>
+            </div>
+            <figure class="visitor-secondary-image">
+              <img src="assets/visitor-rowboat-portrait.png" alt="A calm moment on the water during a stay at Le Clos de la Voilerie" />
+            </figure>
+          </div>
+        </section>
+
+        <section class="visitor-section visitor-block soft" id="offres">
+          <div class="visitor-offer-grid">
+            <div>
+              <p class="eyebrow dark">guest offers</p>
+              <h2>Come back by booking direct</h2>
+              <p>
+                For a future stay in Brittany, contact us directly before booking through a platform.
+                Depending on the available dates, we will be able to offer you our best conditions. This code gives you
+                access to an additional 5% discount on your next stay, for you or for your friends and family.
+              </p>
+            </div>
+            <div class="visitor-offer-code">
+              Code to quote
+              <span>VOILERIE-DIRECT5</span>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
   </main>
 
-  <footer>
-    Le Clos de la Voilerie · Audierne‑Plouhinec<br>
-    Private guide reserved for guests of Le Clos de la Voilerie
-  </footer>
-
   <script>
-    const accessForm = document.getElementById('accessForm');
-    const guide = document.getElementById('guide');
-    const success = document.getElementById('formSuccess');
+    (function () {
+      var form = document.getElementById('visitor-form');
+      var access = document.getElementById('visitor-access');
+      var content = document.getElementById('visitor-content');
+      var status = document.getElementById('visitor-form-status');
+      var submitButton = document.getElementById('visitor-submit-button');
 
-    accessForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-      guide.classList.add('is-visible');
-      success.classList.add('is-visible');
-      setTimeout(() => guide.scrollIntoView({ behavior: 'smooth', block: 'start' }), 250);
-    });
+      function showContent() {
+        content.hidden = false;
+        access.classList.add('is-complete');
+        try { localStorage.setItem('voilerieVisitorAccess', 'yes'); } catch (e) {}
+        window.setTimeout(function () {
+          content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 120);
+      }
+
+      function showStatus(message, isError) {
+        status.textContent = message;
+        status.hidden = false;
+        status.classList.toggle('is-error', !!isError);
+      }
+
+      try {
+        if (localStorage.getItem('voilerieVisitorAccess') === 'yes') {
+          content.hidden = false;
+          access.classList.add('is-complete');
+        }
+      } catch (e) {}
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending…';
+        showStatus('Thank you, we are saving your information…', false);
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (response) {
+          if (response.ok) {
+            showStatus('Thank you. You can now access the guest guide.', false);
+            showContent();
+            return;
+          }
+          return response.json().then(function (data) {
+            var message = data && data.errors && data.errors.length
+              ? data.errors.map(function (error) { return error.message; }).join(' ')
+              : 'Something went wrong. Please try again.';
+            throw new Error(message);
+          }).catch(function () {
+            throw new Error('Something went wrong. Please try again.');
+          });
+        }).catch(function (error) {
+          showStatus(error.message || 'Something went wrong. Please try again.', true);
+        }).finally(function () {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Access the guest guide';
+        });
+      });
+
+      var boatButton = document.getElementById('show-boat-code');
+      var boatCheckbox = document.getElementById('boat-accept');
+      var boatCode = document.getElementById('boat-code');
+
+      if (boatButton && boatCheckbox && boatCode) {
+        boatButton.addEventListener('click', function () {
+          if (!boatCheckbox.checked) {
+            alert('Please accept the conditions of use before showing the code.');
+            return;
+          }
+          boatCode.hidden = false;
+          boatCode.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      }
+    })();
   </script>
 </body>
 </html>
